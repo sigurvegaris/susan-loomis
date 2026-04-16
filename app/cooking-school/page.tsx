@@ -1,0 +1,363 @@
+"use client";
+
+import { useState } from "react";
+
+export default function CookingSchoolPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <>
+      <style>{`
+        /* ── NAV ── */
+        .nav {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+          height: 68px; background: var(--dark);
+          display: flex; align-items: center;
+          justify-content: space-between; padding: 0 3rem;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo-mark {
+          width: 38px; height: 38px; background: var(--amber);
+          border-radius: 10px; display: flex; align-items: center;
+          justify-content: center; font-weight: 800; font-size: 16px;
+          color: var(--dark); flex-shrink: 0; font-family: var(--sans);
+        }
+        .nav-logo-text { display: flex; flex-direction: column; }
+        .nav-logo-name {
+          font-weight: 700; font-size: 14px; color: var(--white);
+          letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1;
+        }
+        .nav-logo-sub {
+          font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+          color: rgba(255,255,255,0.4); line-height: 1;
+        }
+        .nav-links { display: flex; list-style: none; gap: 2.25rem; align-items: center; }
+        .nav-links a {
+          font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase;
+          font-weight: 600; color: rgba(255,255,255,0.65); transition: color var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--amber); }
+        .nav-cta {
+          background: var(--amber); color: var(--dark);
+          font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+          font-weight: 700; padding: 10px 22px; border-radius: var(--radius-btn);
+          transition: background var(--transition), transform var(--transition); flex-shrink: 0;
+        }
+        .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
+        .hamburger {
+          display: none; flex-direction: column; gap: 5px;
+          background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+          display: block; width: 22px; height: 2px; background: var(--white);
+          transition: transform var(--transition), opacity var(--transition);
+        }
+        .mobile-drawer {
+          display: none; position: fixed; top: 68px; left: 0; right: 0;
+          z-index: 199; background: var(--dark); flex-direction: column;
+          border-top: 1px solid rgba(255,255,255,0.07); padding: 1rem 2rem 2rem;
+        }
+        .mobile-drawer.open { display: flex; }
+        .mobile-drawer a {
+          font-size: 15px; font-weight: 600; letter-spacing: 0.08em;
+          text-transform: uppercase; color: rgba(255,255,255,0.75);
+          padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+          transition: color var(--transition);
+        }
+        .mobile-drawer a:hover { color: var(--amber); }
+
+        /* ── PAGE ── */
+        .page-wrap {
+          background: var(--dark);
+          padding-top: 68px;
+          min-height: 100vh;
+        }
+
+        /* ── HERO ── */
+        .cs-hero {
+          padding: 5rem 4rem 4rem;
+          position: relative; overflow: hidden;
+        }
+        .cs-hero::before {
+          content: ''; position: absolute; inset: 0;
+          background: radial-gradient(ellipse at 75% 50%, rgba(245,200,66,0.06) 0%, transparent 55%);
+          pointer-events: none;
+        }
+        .cs-hero-inner {
+          display: grid; grid-template-columns: 1fr 1fr;
+          gap: 5rem; align-items: center;
+        }
+        .cs-hero-eyebrow {
+          font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+          text-transform: uppercase; color: var(--amber); margin-bottom: 1rem;
+          animation: fadeUp 0.6s ease 0.1s both;
+        }
+        .cs-hero h1 {
+          font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800;
+          text-transform: uppercase; color: var(--white); line-height: 1.0;
+          letter-spacing: -0.01em; margin-bottom: 1.5rem;
+          animation: fadeUp 0.6s ease 0.2s both;
+        }
+        .cs-hero h1 span { color: var(--amber); }
+        .cs-hero-desc {
+          font-size: 16px; color: rgba(255,255,255,0.6);
+          line-height: 1.8; max-width: 460px;
+          animation: fadeUp 0.6s ease 0.3s both;
+        }
+        .cs-hero-btns {
+          display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
+          animation: fadeUp 0.6s ease 0.4s both;
+        }
+        .btn-primary {
+          display: inline-flex; align-items: center;
+          background: var(--amber); color: var(--dark);
+          font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+          text-transform: uppercase; padding: 13px 28px; border-radius: var(--radius-btn);
+          transition: background var(--transition), transform var(--transition);
+        }
+        .btn-primary:hover { background: var(--amber-dark); transform: translateY(-2px); }
+        .btn-ghost-hero {
+          display: inline-flex; align-items: center;
+          border: 2px solid rgba(255,255,255,0.25); color: var(--white);
+          font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+          text-transform: uppercase; padding: 13px 28px; border-radius: var(--radius-btn);
+          transition: border-color var(--transition), background var(--transition), transform var(--transition);
+        }
+        .btn-ghost-hero:hover { border-color: var(--white); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+
+        /* hero image */
+        .cs-hero-img {
+          border-radius: var(--radius-card); overflow: hidden;
+          aspect-ratio: 3/4; background: #1a2a1a;
+          animation: fadeUp 0.7s ease 0.25s both;
+        }
+        .cs-hero-img img {
+          width: 100%; height: 100%; object-fit: cover;
+          object-position: center 15%;
+          transition: transform 7s ease;
+        }
+        .cs-hero:hover .cs-hero-img img { transform: scale(1.04); }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+          padding: 2.5rem 4rem 4rem;
+          display: flex; gap: 4rem; flex-wrap: wrap;
+          border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .stat-num {
+          display: block; font-size: clamp(2.5rem, 4vw, 3.5rem);
+          font-weight: 800; color: var(--amber); line-height: 1;
+          animation: fadeUp 0.6s ease 0.5s both;
+        }
+        .stat-label {
+          display: block; font-size: 10px; font-weight: 700;
+          letter-spacing: 0.2em; text-transform: uppercase;
+          color: rgba(255,255,255,0.3); margin-top: 6px;
+          animation: fadeUp 0.6s ease 0.55s both;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+          background: var(--dark); padding: 4rem 4rem 0; color: var(--white);
+          border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer-inner {
+          display: grid; grid-template-columns: 1.8fr 1fr 1.4fr;
+          gap: 4rem; padding-bottom: 3.5rem;
+        }
+        .footer-brand-name {
+          font-size: 1.1rem; font-weight: 800; text-transform: uppercase;
+          letter-spacing: 0.06em; color: var(--white); display: block; margin-bottom: 0.75rem;
+        }
+        .footer-address { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.8; }
+        .footer-col h4 {
+          font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+          text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.6rem; }
+        .footer-col a {
+          font-size: 14px; font-weight: 600; text-transform: uppercase;
+          letter-spacing: 0.06em; color: rgba(255,255,255,0.5); transition: color var(--transition);
+        }
+        .footer-col a:hover { color: var(--amber); }
+        .footer-newsletter {
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+          border-radius: var(--radius-card); padding: 2rem;
+        }
+        .footer-newsletter h3 {
+          font-size: 1.2rem; font-weight: 800; text-transform: uppercase;
+          letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.4rem;
+        }
+        .footer-newsletter p { font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 1.25rem; }
+        .newsletter-input {
+          width: 100%; background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-btn);
+          color: var(--white); font-size: 13px; padding: 12px 16px; outline: none;
+          margin-bottom: 0.75rem; transition: border-color var(--transition); font-family: var(--sans);
+        }
+        .newsletter-input::placeholder { color: rgba(255,255,255,0.2); }
+        .newsletter-input:focus { border-color: var(--amber); }
+        .btn-subscribe {
+          width: 100%; background: var(--amber); color: var(--dark);
+          border: none; cursor: pointer; font-size: 13px; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 13px; border-radius: var(--radius-btn);
+          transition: background var(--transition); font-family: var(--sans);
+        }
+        .btn-subscribe:hover { background: var(--amber-dark); }
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.07); padding: 1.5rem 0;
+          display: flex; align-items: center;
+          justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-legal { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .footer-legal a, .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); transition: color var(--transition); }
+        .footer-legal a:hover { color: var(--white); }
+        .footer-social { display: flex; gap: 0.75rem; }
+        .footer-social a {
+          font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+          color: rgba(255,255,255,0.28); border: 1px solid rgba(255,255,255,0.1);
+          padding: 6px 14px; border-radius: var(--radius-btn);
+          transition: color var(--transition), border-color var(--transition);
+        }
+        .footer-social a:hover { color: var(--amber); border-color: var(--amber); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+          .nav { padding: 0 2rem; }
+          .cs-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+          .cs-hero-img { aspect-ratio: 4/3; }
+          .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+          .nav { padding: 0 1.25rem; }
+          .nav-links, .nav-cta { display: none; }
+          .hamburger { display: flex; }
+          .nav-logo-sub { display: none; }
+          .cs-hero { padding: 3rem 1.25rem 3rem; }
+          .cs-hero h1 { font-size: clamp(2.4rem, 9vw, 4rem); }
+          .cs-hero-desc { font-size: 15px; }
+          .cs-hero-btns { flex-direction: column; }
+          .btn-primary, .btn-ghost-hero { width: 100%; justify-content: center; }
+          .cs-hero-img { aspect-ratio: 4/3; }
+          footer { padding: 3rem 1.25rem 0; }
+          .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+          .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+          .cs-hero h1 { font-size: 2rem; }
+          .cs-hero-img { aspect-ratio: 1/1; }
+        }
+      `}</style>
+
+      {/* ── NAV ── */}
+      <nav className="nav">
+        <a href="/" className="nav-logo">
+          <div className="nav-logo-mark">SL</div>
+          <div className="nav-logo-text">
+            <span className="nav-logo-name">Susan Herrmann Loomis</span>
+            <span className="nav-logo-sub">Author · Chef · Cooking School</span>
+          </div>
+        </a>
+        <ul className="nav-links">
+          <li><a href="/books">Books</a></li>
+          <li><a href="/cooking-school" className="active">Cooking School</a></li>
+          <li><a href="/writing-courses">Writing Courses</a></li>
+          <li><a href="/ghostwriting">Ghostwriting</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+        <a href="/contact" className="nav-cta">Get in Touch</a>
+        <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+          <span style={{ transform: menuOpen ? "translateY(7px) rotate(45deg)" : "" }} />
+          <span style={{ opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ transform: menuOpen ? "translateY(-7px) rotate(-45deg)" : "" }} />
+        </button>
+      </nav>
+
+      <div className={`mobile-drawer${menuOpen ? " open" : ""}`}>
+        {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([l,h]) => (
+          <a key={h} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
+        ))}
+      </div>
+
+      <div className="page-wrap">
+
+        {/* ── HERO ── */}
+        <section className="cs-hero">
+          <div className="cs-hero-inner">
+            <div>
+              <p className="cs-hero-eyebrow">Paris, France</p>
+              <h1>On Rue <span>Tatin</span></h1>
+              <p className="cs-hero-desc">
+                Small classes in a charming Parisian apartment. Thirty years
+                of living and cooking in France, distilled into one
+                unforgettable experience with Susan Herrmann Loomis. Every
+                guest puts on their apron, picks up their whisk or their
+                knife, and has Susan&apos;s full attention. You will leave
+                class knowing how to taste, feel, sense — a confident cook.
+              </p>
+              <div className="cs-hero-btns">
+                <a href="https://onruetatin.com" className="btn-primary" target="_blank" rel="noopener noreferrer">
+                  Book a class →
+                </a>
+                <a href="https://onruetatin.com" className="btn-ghost-hero" target="_blank" rel="noopener noreferrer">
+                  Visit onruetatin.com
+                </a>
+              </div>
+            </div>
+            {/* PLACEHOLDER: replace with a real photo of the kitchen or convent */}
+            <div className="cs-hero-img">
+              <img
+                src="/images/susan-teaching.jpg"
+                alt="On Rue Tatin cooking school"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── FOOTER ── */}
+        <footer>
+          <div className="footer-inner">
+            <div>
+              <span className="footer-brand-name">Susan Herrmann Loomis</span>
+              <p className="footer-address">
+                On Rue Tatin Cooking School<br />
+                Louviers, Normandy, France &amp; Paris, France<br />
+                susan@onruetatin.com
+              </p>
+            </div>
+            <div className="footer-col">
+              <h4>Pages</h4>
+              <ul>
+                {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
+                  <li key={h}><a href={h}>{l}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-newsletter">
+              <h3>Stay Informed</h3>
+              <p>News, recipes, and class updates from Normandy.</p>
+              <input className="newsletter-input" type="email" placeholder="example@email.com" />
+              <button className="btn-subscribe">Subscribe</button>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <div className="footer-legal">
+              <span className="footer-copy">© 2025 Susan Herrmann Loomis</span>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="https://onruetatin.com" target="_blank" rel="noopener noreferrer">onruetatin.com</a>
+            </div>
+            <div className="footer-social">
+              <a href="#">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">Amazon</a>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </>
+  );
+}
