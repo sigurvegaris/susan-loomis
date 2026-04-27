@@ -6,6 +6,9 @@ import { useState } from "react";
 
 export default function GhostwritingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
+  const toggleCard = (i: number) => setExpandedCard(expandedCard === i ? null : i);
 
   return (
     <>
@@ -13,35 +16,52 @@ export default function GhostwritingPage() {
         /* ── NAV ── */
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-          height: 68px; background: var(--dark);
+          height: 72px; background: #f7f3ed;
           display: flex; align-items: center;
           justify-content: space-between; padding: 0 3rem;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark {
-          width: 38px; height: 38px; background: var(--amber);
-          border-radius: 10px; display: flex; align-items: center;
-          justify-content: center; font-weight: 800; font-size: 16px;
-          color: var(--dark); flex-shrink: 0; font-family: var(--sans);
-        }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+        .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
-        .nav-logo-name { font-weight: 700; font-size: 14px; color: var(--white); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1; }
-        .nav-logo-sub { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); line-height: 1; }
+        .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
+        .nav-logo-sub { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #6e6660; line-height: 1; margin-top: 2px; }
         .nav-links { display: flex; list-style: none; gap: 2.25rem; align-items: center; }
-        .nav-links a { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,0.65); transition: color var(--transition); }
-        .nav-links a:hover, .nav-links a.active { color: var(--amber); }
-        .nav-cta { background: var(--amber); color: var(--dark); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; padding: 10px 22px; border-radius: var(--radius-btn); transition: background var(--transition), transform var(--transition); flex-shrink: 0; }
-        .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
+        .nav-links a { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; color: #6e6660; transition: color 0.22s ease; }
+        .nav-links a:hover, .nav-links a.active { color: #a8382a; }
+        .nav-cta { background: #a8382a; color: #fff; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 10px 22px; border-radius: 2px; transition: background 0.22s ease; flex-shrink: 0; }
+        .nav-cta:hover { background: #8a2d21; }
         .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); transition: transform var(--transition), opacity var(--transition); }
-        .mobile-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 199; background: var(--dark); flex-direction: column; border-top: 1px solid rgba(255,255,255,0.07); padding: 1rem 2rem 2rem; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #1a1714; transition: transform 0.22s ease, opacity 0.22s ease; }
+        .mobile-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 199; background: #f7f3ed; flex-direction: column; border-top: 1px solid rgba(26,23,20,0.1); padding: 1rem 2rem 2rem; }
         .mobile-drawer.open { display: flex; }
-        .mobile-drawer a { font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.75); padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color var(--transition); }
-        .mobile-drawer a:hover { color: var(--amber); }
+        .mobile-drawer a { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #1a1714; padding: 1rem 0; border-bottom: 1px solid rgba(26,23,20,0.08); transition: color 0.22s ease; }
+        .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE ── */
-        .page-wrap { padding-top: 68px; background: var(--cream); }
+        .page-wrap { padding-top: 72px; background: var(--cream); }
+
+        /* ── FAMILY COOKBOOK SECTION ── */
+        .family-cookbook-section { background: var(--cream); padding: 5rem 4rem; }
+        .family-cookbook-inner { display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; max-width: 1200px; margin: 0 auto; }
+        .fc-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.75rem; }
+        .family-cookbook-text h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; font-style: italic; color: var(--terra); line-height: 1.2; margin-bottom: 1.5rem; }
+        .family-cookbook-text h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 2rem 0 1rem; }
+        .family-cookbook-text p { font-size: 15px; color: var(--warm); line-height: 1.85; margin-bottom: 1rem; }
+        .fc-step { margin-bottom: 0.75rem; padding-left: 1.25rem; border-left: 2px solid var(--gold); }
+        .fc-step-title { font-size: 14px; font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.5rem; }
+        .fc-step ul, .fc-self-pub ul { list-style: none; padding: 0; }
+        .fc-step li, .fc-self-pub li { font-size: 14px; color: var(--warm); line-height: 1.8; padding-left: 1rem; position: relative; }
+        .fc-step li::before, .fc-self-pub li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+        .fc-self-pub { margin-top: 1rem; padding-left: 1.25rem; border-left: 2px solid var(--gold); }
+        .fc-cta-card { background: var(--parch); border: 1px solid rgba(26,23,20,0.1); padding: 2.5rem; position: sticky; top: 96px; }
+        .fc-cta-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 700; font-style: italic; color: var(--ink); margin-bottom: 0.75rem; }
+        .fc-cta-card p { font-size: 14px; color: var(--warm); line-height: 1.75; margin-bottom: 1.5rem; }
+        .btn-fc-cta { display: block; background: var(--terra); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 24px; text-align: center; border-radius: 2px; transition: background 0.22s ease; margin-bottom: 1rem; }
+        .btn-fc-cta:hover { background: var(--terra-dark); }
+        .fc-email-link { display: block; text-align: center; font-size: 13px; color: var(--teal); border-bottom: 1px solid var(--teal); width: fit-content; margin: 0 auto; transition: color 0.22s ease; }
+        .fc-email-link:hover { color: var(--teal-mid); }
 
         /* ── HERO ── */
         .gw-hero {
@@ -93,8 +113,8 @@ export default function GhostwritingPage() {
           transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
         .service-big-card:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(13,31,26,0.2); }
-        .service-big-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); transition: transform 0.6s ease, filter 0.4s ease; display: block; }
-        .service-big-card:hover img { transform: scale(1.05); filter: brightness(0.4); }
+        .service-big-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); transition: transform 0.6s ease, filter 0.4s ease; display: block; }
+        .service-big-card:hover img { transform: scale(1.05); filter: brightness(0.45); }
 
         /* pill label top-left */
         .sbc-pill {
@@ -109,14 +129,14 @@ export default function GhostwritingPage() {
         /* title + desc at the bottom */
         .sbc-bottom {
           position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-          background: linear-gradient(to top, rgba(13,31,26,0.97) 0%, rgba(13,31,26,0.6) 60%, transparent 100%);
-          padding: 2.5rem 1.75rem 1.75rem;
+          background: linear-gradient(to top, rgba(13,31,26,0.95) 0%, rgba(13,31,26,0.4) 55%, transparent 100%);
+          padding: 2rem 1.75rem 1.5rem;
         }
-        .sbc-title { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1.15; margin-bottom: 0.5rem; }
-        .sbc-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 1rem; }
+        .sbc-title { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1.15; margin-bottom: 0.4rem; }
+        .sbc-desc { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 0.75rem; }
         .sbc-includes { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-        .sbc-includes li { font-size: 12px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 7px; }
-        .sbc-includes li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--amber); opacity: 0.7; flex-shrink: 0; }
+        .sbc-includes li { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 7px; }
+        .sbc-includes li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.8; flex-shrink: 0; }
 
         /* ── OVERLAP CARD SECTION — FHM image 3 style ── */
         /* Image right, dark card overlapping left */
@@ -286,13 +306,27 @@ export default function GhostwritingPage() {
         @media (max-width: 480px) {
           .gw-hero h1 { font-size: 2rem; }
           .service-big-card { aspect-ratio: 3/2; }
+          .sbc-desc, .sbc-includes { display: none; }
+          .service-big-card .sbc-bottom { padding-bottom: 2.5rem; }
+          .service-big-card.expanded .sbc-desc,
+          .service-big-card.expanded .sbc-includes { display: block; }
+          .service-big-card.expanded img { filter: brightness(0.4); }
+          .service-big-card::after {
+            content: 'TAP FOR DETAILS';
+            position: absolute; bottom: 1rem; left: 1.5rem;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.7);
+          }
+          .service-big-card.expanded::after { display: none; }
         }
       `}</style>
 
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark">SL</div>
+          <div className="nav-logo-mark">
+            <img src="/images/onruetatinlogo.png" alt="On Rue Tatin" />
+          </div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -301,7 +335,7 @@ export default function GhostwritingPage() {
         <ul className="nav-links">
           <li><a href="/books">Books</a></li>
           <li><a href="/cooking-school">Cooking School</a></li>
-          <li><a href="/writing-courses">Writing Courses</a></li>
+          <li><a href="/write-your-cookbook">Write Your Cookbook</a></li>
           <li><a href="/ghostwriting" className="active">Ghostwriting</a></li>
           <li><a href="/about">About</a></li>
         </ul>
@@ -314,7 +348,7 @@ export default function GhostwritingPage() {
       </nav>
 
       <div className={`mobile-drawer${menuOpen ? " open" : ""}`}>
-        {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([l,h]) => (
+        {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([l,h]) => (
           <a key={h} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
       </div>
@@ -346,7 +380,7 @@ export default function GhostwritingPage() {
           </div>
         </section>
 
-        {/* ── TWO SERVICE CARDS — FHM image 4 style ── */}
+        {/* ── TWO SERVICE CARDS ── */}
         <section className="services-section">
           <p className="services-eyebrow">What Susan offers</p>
           <h2>Ways to <span>Work Together</span></h2>
@@ -354,8 +388,7 @@ export default function GhostwritingPage() {
           <div className="service-cards-grid">
 
             {/* Card 1 — Full Ghostwriting */}
-            <div className="service-big-card">
-              {/* PLACEHOLDER: replace with a writing / manuscript photo */}
+            <div className={`service-big-card${expandedCard === 0 ? " expanded" : ""}`} onClick={() => toggleCard(0)}>
               <img
                 src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&auto=format&q=75"
                 alt="Full ghostwriting"
@@ -379,10 +412,9 @@ export default function GhostwritingPage() {
             </div>
 
             {/* Card 2 — Writing Consulting */}
-            <div className="service-big-card">
-              {/* PLACEHOLDER: replace with a books / editing photo */}
+            <div className={`service-big-card${expandedCard === 1 ? " expanded" : ""}`} onClick={() => toggleCard(1)}>
               <img
-                src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=900&auto=format&q=75"
+                src="/images/stackofbooks.jpg"
                 alt="Writing consulting"
               />
               <span className="sbc-pill">Writing Consulting</span>
@@ -406,89 +438,20 @@ export default function GhostwritingPage() {
           </div>
         </section>
 
-        {/* ── FEATURED CARD — FHM image 1 style ── */}
-        <section className="featured-section">
-          <p className="featured-section-label">Also available</p>
-          <a href="/contact" className="featured-card">
-            {/* PLACEHOLDER: replace with a cooking / food writing photo */}
-            <img
-              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1400&auto=format&q=75"
-              alt="Recipe development and food writing"
-            />
-            <span className="fc-pill">Speciality Service</span>
-            <div className="fc-bottom">
-              <div className="fc-text">
-                <span className="fc-sub">By arrangement</span>
-                <h3 className="fc-title">Recipe Development & Food Writing</h3>
-              </div>
-              <span className="btn-fc">Enquire →</span>
+        {/* ── CTA ── */}
+        <section style={{ background: '#2e7175', padding: '5rem 4rem' }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, fontStyle: 'italic', color: '#fff', marginBottom: '1rem' }}>
+              Ready to start the conversation?
+            </h2>
+            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, marginBottom: '2rem' }}>
+              Whether you have a manuscript, an idea, or just a story you&apos;ve always wanted to tell —
+              reach out and Susan will respond within 3–5 business days.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/contact" style={{ background: '#c8a96e', color: '#1a1714', fontSize: '12px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px 32px', borderRadius: '2px', transition: 'background 0.22s ease' }}>Fill out the form →</a>
+              <a href="mailto:susan@onruetatin.com" style={{ background: 'transparent', color: '#fff', fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px 32px', borderRadius: '2px', border: '1px solid rgba(255,255,255,0.4)' }}>susan@onruetatin.com</a>
             </div>
-          </a>
-        </section>
-
-        {/* ── OVERLAP CARD — FHM image 3 style (image right, card left) ── */}
-        <section className="overlap-section">
-          <h2>Why Susan</h2>
-          <div className="overlap-wrap">
-            <div className="overlap-img">
-              {/* PLACEHOLDER: replace with Susan writing or cooking photo */}
-              <img
-                src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=900&auto=format&q=75"
-                alt="Susan Herrmann Loomis"
-              />
-            </div>
-            <div className="overlap-card">
-              <h3>Fourteen Books. Thirty Years. Your Voice.</h3>
-              <p>
-                Susan brings a journalist&apos;s ear, a chef&apos;s precision, and a
-                writer&apos;s sensitivity to every project she takes on. She knows
-                how publishers think, how recipes should read, and how to find
-                the voice inside your story — then get it onto the page with
-                the craft it deserves.
-              </p>
-              <a href="/contact" className="btn-overlap">Start the conversation →</a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── FLOAT CARD — FHM image 2 style (image left, card right) ── */}
-        <section className="float-section">
-          <div className="float-wrap">
-            <div className="float-img">
-              {/* PLACEHOLDER: replace with a market or kitchen photo */}
-              <img
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&auto=format&q=75"
-                alt="French food and writing"
-              />
-            </div>
-            <div className="float-card">
-              <h3>Working Through Literary Agents</h3>
-              <p>
-                Ghostwriting inquiries are best handled through a literary
-                agent. If you have representation, ask your agent to reach
-                out to susan@onruetatin.com. If you&apos;re at an earlier stage,
-                Susan is happy to have an initial conversation and advise
-                on next steps.
-              </p>
-              <a href="/contact" className="btn-overlap">Get in touch</a>
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* ── AGENT CARD ── */}
-        <section className="agent-section">
-          <div className="agent-card">
-            <div className="agent-card-left">
-              <h3>Ready to talk?</h3>
-              <p>
-                Whether you have an agent, a manuscript, or just an idea —
-                reach out and start the conversation. Susan responds to all
-                enquiries within 3–5 business days.
-              </p>
-            </div>
-            <a href="/contact" className="btn-outline-card">Go to contact page</a>
           </div>
         </section>
 
@@ -505,7 +468,7 @@ export default function GhostwritingPage() {
             <div className="footer-col">
               <h4>Pages</h4>
               <ul>
-                {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
+                {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
                   <li key={h}><a href={h}>{l}</a></li>
                 ))}
               </ul>

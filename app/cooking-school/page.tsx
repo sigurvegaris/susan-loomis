@@ -11,66 +11,33 @@ export default function CookingSchoolPage() {
         /* ── NAV ── */
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-          height: 68px; background: var(--dark);
+          height: 72px; background: #f7f3ed;
           display: flex; align-items: center;
           justify-content: space-between; padding: 0 3rem;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark {
-          width: 38px; height: 38px; background: var(--amber);
-          border-radius: 10px; display: flex; align-items: center;
-          justify-content: center; font-weight: 800; font-size: 16px;
-          color: var(--dark); flex-shrink: 0; font-family: var(--sans);
-        }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
-        .nav-logo-name {
-          font-weight: 700; font-size: 14px; color: var(--white);
-          letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1;
-        }
-        .nav-logo-sub {
-          font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-          color: rgba(255,255,255,0.4); line-height: 1;
-        }
+        .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
+        .nav-logo-sub { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #6e6660; line-height: 1; margin-top: 2px; }
         .nav-links { display: flex; list-style: none; gap: 2.25rem; align-items: center; }
-        .nav-links a {
-          font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase;
-          font-weight: 600; color: rgba(255,255,255,0.65); transition: color var(--transition);
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--amber); }
-        .nav-cta {
-          background: var(--amber); color: var(--dark);
-          font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-          font-weight: 700; padding: 10px 22px; border-radius: var(--radius-btn);
-          transition: background var(--transition), transform var(--transition); flex-shrink: 0;
-        }
-        .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
-        .hamburger {
-          display: none; flex-direction: column; gap: 5px;
-          background: none; border: none; cursor: pointer; padding: 4px;
-        }
-        .hamburger span {
-          display: block; width: 22px; height: 2px; background: var(--white);
-          transition: transform var(--transition), opacity var(--transition);
-        }
-        .mobile-drawer {
-          display: none; position: fixed; top: 68px; left: 0; right: 0;
-          z-index: 199; background: var(--dark); flex-direction: column;
-          border-top: 1px solid rgba(255,255,255,0.07); padding: 1rem 2rem 2rem;
-        }
+        .nav-links a { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; color: #6e6660; transition: color 0.22s ease; }
+        .nav-links a:hover, .nav-links a.active { color: #a8382a; }
+        .nav-cta { background: #a8382a; color: #fff; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 10px 22px; border-radius: 2px; transition: background 0.22s ease; flex-shrink: 0; }
+        .nav-cta:hover { background: #8a2d21; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #1a1714; transition: transform 0.22s ease, opacity 0.22s ease; }
+        .mobile-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 199; background: #f7f3ed; flex-direction: column; border-top: 1px solid rgba(26,23,20,0.1); padding: 1rem 2rem 2rem; }
         .mobile-drawer.open { display: flex; }
-        .mobile-drawer a {
-          font-size: 15px; font-weight: 600; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(255,255,255,0.75);
-          padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-          transition: color var(--transition);
-        }
-        .mobile-drawer a:hover { color: var(--amber); }
+        .mobile-drawer a { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #1a1714; padding: 1rem 0; border-bottom: 1px solid rgba(26,23,20,0.08); transition: color 0.22s ease; }
+        .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE ── */
         .page-wrap {
           background: var(--dark);
-          padding-top: 68px;
+          padding-top: 72px;
           min-height: 100vh;
         }
 
@@ -255,7 +222,7 @@ export default function CookingSchoolPage() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark">SL</div>
+          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -264,7 +231,7 @@ export default function CookingSchoolPage() {
         <ul className="nav-links">
           <li><a href="/books">Books</a></li>
           <li><a href="/cooking-school" className="active">Cooking School</a></li>
-          <li><a href="/writing-courses">Writing Courses</a></li>
+          <li><a href="/write-your-cookbook">Write Your Cookbook</a></li>
           <li><a href="/ghostwriting">Ghostwriting</a></li>
           <li><a href="/about">About</a></li>
         </ul>
@@ -277,7 +244,7 @@ export default function CookingSchoolPage() {
       </nav>
 
       <div className={`mobile-drawer${menuOpen ? " open" : ""}`}>
-        {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([l,h]) => (
+        {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([l,h]) => (
           <a key={h} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
       </div>
@@ -331,7 +298,7 @@ export default function CookingSchoolPage() {
             <div className="footer-col">
               <h4>Pages</h4>
               <ul>
-                {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
+                {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
                   <li key={h}><a href={h}>{l}</a></li>
                 ))}
               </ul>

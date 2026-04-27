@@ -159,18 +159,9 @@ function useReveal() {
 export default function BooksPage() {
   useReveal();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [filter, setFilter] = useState<"all" | "early" | "mid" | "recent">("all");
-  const [search, setSearch] = useState("");
+  
+  
 
-  const filtered = BOOKS.filter((b) => {
-    const matchesEra =
-      filter === "all" ? true :
-      filter === "early"  ? b.era === "early" :
-      filter === "mid"    ? b.era === "mid" :
-      b.era === "recent";
-    const matchesSearch = b.title.toLowerCase().includes(search.toLowerCase());
-    return matchesEra && matchesSearch;
-  });
 
   return (
     <>
@@ -178,70 +169,71 @@ export default function BooksPage() {
         /* ── NAV ── */
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-          height: 68px; background: var(--dark);
+          height: 72px; background: #f7f3ed;
           display: flex; align-items: center;
           justify-content: space-between; padding: 0 3rem;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
         .nav-logo-mark {
-          width: 38px; height: 38px; background: var(--amber);
-          border-radius: 10px; display: flex; align-items: center;
-          justify-content: center; font-weight: 800; font-size: 16px;
-          color: var(--dark); flex-shrink: 0; font-family: var(--sans);
+          width: 40px; height: 40px;
+          display: flex; align-items: center;
+          justify-content: center; flex-shrink: 0; overflow: hidden;
         }
+        .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name {
-          font-weight: 700; font-size: 14px; color: var(--white);
-          letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-weight: 600; font-size: 17px; color: #1a1714;
+          letter-spacing: 0.01em; line-height: 1.1;
         }
         .nav-logo-sub {
-          font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-          color: rgba(255,255,255,0.4); line-height: 1;
+          font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+          color: #6e6660; line-height: 1; margin-top: 2px;
         }
         .nav-links { display: flex; list-style: none; gap: 2.25rem; align-items: center; }
         .nav-links a {
           font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase;
-          font-weight: 600; color: rgba(255,255,255,0.65);
-          transition: color var(--transition);
+          font-weight: 500; color: #6e6660;
+          transition: color 0.22s ease;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--amber); }
+        .nav-links a:hover, .nav-links a.active { color: #a8382a; }
         .nav-cta {
-          background: var(--amber); color: var(--dark);
+          background: #a8382a; color: #fff;
           font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-          font-weight: 700; padding: 10px 22px;
-          border-radius: var(--radius-btn);
-          transition: background var(--transition), transform var(--transition);
+          font-weight: 600; padding: 10px 22px;
+          border-radius: 2px;
+          transition: background 0.22s ease;
           flex-shrink: 0;
         }
-        .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
+        .nav-cta:hover { background: #8a2d21; }
         .hamburger {
           display: none; flex-direction: column; gap: 5px;
           background: none; border: none; cursor: pointer; padding: 4px;
         }
         .hamburger span {
-          display: block; width: 22px; height: 2px; background: var(--white);
-          transition: transform var(--transition), opacity var(--transition);
+          display: block; width: 22px; height: 2px; background: #1a1714;
+          transition: transform 0.22s ease, opacity 0.22s ease;
         }
         .mobile-drawer {
-          display: none; position: fixed; top: 68px; left: 0; right: 0;
-          z-index: 199; background: var(--dark); flex-direction: column;
-          border-top: 1px solid rgba(255,255,255,0.07); padding: 1rem 2rem 2rem;
+          display: none; position: fixed; top: 72px; left: 0; right: 0;
+          z-index: 199; background: #f7f3ed; flex-direction: column;
+          border-top: 1px solid rgba(26,23,20,0.1); padding: 1rem 2rem 2rem;
         }
         .mobile-drawer.open { display: flex; }
         .mobile-drawer a {
-          font-size: 15px; font-weight: 600; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(255,255,255,0.75);
-          padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-          transition: color var(--transition);
+          font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
+          text-transform: uppercase; color: #1a1714;
+          padding: 1rem 0; border-bottom: 1px solid rgba(26,23,20,0.08);
+          transition: color 0.22s ease;
         }
-        .mobile-drawer a:hover { color: var(--amber); }
+        .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE WRAPPER — amber bg like FHM ── */
         .page-wrap {
           background: var(--cream);
           min-height: 100vh;
-          padding-top: 68px;
+          padding-top: 72px;
         }
 
         /* ── PAGE HERO STRIP ── */
@@ -285,72 +277,26 @@ export default function BooksPage() {
         .page-hero-count span { color: var(--amber); }
 
         /* ── FILTER BAR — exact FHM style ── */
-        .filter-bar {
-          background: var(--cream);
-          padding: 1.5rem 3rem;
-          display: flex; align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap; gap: 1rem;
-          position: sticky; top: 68px; z-index: 10;
-          border-bottom: 1px solid rgba(13,31,26,0.1);
-        }
-        .filter-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-        .filter-toggle {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: var(--dark); color: var(--amber);
-          font-size: 12px; font-weight: 700;
-          letter-spacing: 0.12em; text-transform: uppercase;
-          padding: 10px 20px; border-radius: var(--radius-btn);
-          border: none; cursor: pointer;
-          transition: background var(--transition), transform var(--transition);
-          font-family: var(--sans);
-        }
-        .filter-toggle:hover { background: #1a3030; transform: translateY(-1px); }
-        .filter-toggle svg { width: 14px; height: 14px; flex-shrink: 0; }
-        .filter-btn {
-          background: transparent; color: var(--text-dark);
-          font-size: 12px; font-weight: 700;
-          letter-spacing: 0.08em; text-transform: uppercase;
-          padding: 9px 20px; border-radius: var(--radius-btn);
-          border: 2px solid rgba(13,31,26,0.2);
-          cursor: pointer;
-          transition: all var(--transition);
-          font-family: var(--sans);
-        }
-        .filter-btn:hover { border-color: var(--text-dark); }
-        .filter-btn.active { background: var(--dark); color: var(--amber); border-color: var(--dark); }
-
-        /* search */
-        .filter-search {
-          background: transparent;
-          border: 2px solid rgba(13,31,26,0.2);
-          color: var(--text-dark);
-          font-size: 13px; font-weight: 400;
-          padding: 9px 16px; border-radius: var(--radius-btn);
-          outline: none; width: 200px;
-          transition: border-color var(--transition);
-          font-family: var(--sans);
-        }
-        .filter-search::placeholder { color: rgba(13,31,26,0.35); }
-        .filter-search:focus { border-color: var(--text-dark); }
-
-        .filter-count {
-          font-size: 14px; font-weight: 700;
-          color: rgba(13,31,26,0.45);
-          letter-spacing: 0.04em;
-          white-space: nowrap;
-        }
-        .filter-count span { color: var(--text-dark); }
-
-        /* ── BOOKS GRID — 3 col, tall cards, FHM style ── */
+        /* ── BOOKS GRID — grouped by era ── */
         .books-grid-section {
           background: var(--cream);
-          padding: 2.5rem 3rem 5rem;
+          padding: 3rem 4rem 5rem;
+        }
+        .era-group { margin-bottom: 4rem; }
+        .era-label {
+          display: flex; align-items: center; gap: 1.25rem;
+          margin-bottom: 2rem;
+        }
+        .era-rule { flex: 1; height: 1px; background: rgba(26,23,20,0.12); }
+        .era-text {
+          font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+          text-transform: uppercase; color: #6e6660;
+          white-space: nowrap;
         }
         .books-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.25rem;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
         }
 
         /* individual card */
@@ -405,44 +351,49 @@ export default function BooksPage() {
           text-transform: uppercase; color: rgba(255,255,255,0.25);
         }
 
-        /* text overlay at bottom — always visible, like FHM */
+        /* text overlay at bottom */
         .book-card-info {
           position: absolute; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(to top, rgba(13,31,26,0.97) 0%, rgba(13,31,26,0.7) 60%, transparent 100%);
-          padding: 2.5rem 1.5rem 1.5rem;
+          background: linear-gradient(to top, rgba(13,31,26,0.92) 0%, rgba(13,31,26,0.5) 50%, transparent 100%);
+          padding: 3rem 1rem 1rem;
         }
         .book-card-title-author {
-          font-size: clamp(13px, 1.3vw, 15px);
+          font-size: clamp(12px, 1.2vw, 14px);
           font-weight: 800; text-transform: uppercase;
           color: var(--white); letter-spacing: 0.04em;
-          line-height: 1.2; margin-bottom: 4px;
+          line-height: 1.2; margin-bottom: 2px;
         }
         .book-card-year {
-          font-size: 13px; color: rgba(255,255,255,0.65);
-          font-weight: 400; margin-bottom: 6px;
+          font-size: 11px; color: rgba(255,255,255,0.55);
+          font-weight: 400;
         }
         .book-card-desc {
-          font-size: 13px; color: rgba(255,255,255,0.75);
-          line-height: 1.55; font-weight: 400;
+          font-size: 12px; color: rgba(255,255,255,0.8);
+          line-height: 1.5; font-weight: 400; margin-top: 6px;
+          max-height: 0; overflow: hidden;
+          transition: max-height 0.3s ease, opacity 0.3s ease;
+          opacity: 0;
+        }
+        .book-card:hover .book-card-desc {
+          max-height: 80px; opacity: 1;
         }
 
         /* amazon button — appears on hover */
         .book-card-btn {
           display: inline-flex; align-items: center; gap: 6px;
-          background: var(--amber); color: var(--dark);
+          background: var(--gold); color: var(--ink);
           font-size: 11px; font-weight: 700;
           letter-spacing: 0.1em; text-transform: uppercase;
-          padding: 8px 18px; border-radius: var(--radius-btn);
-          margin-top: 10px;
+          padding: 7px 16px; border-radius: 2px;
+          margin-top: 8px;
           opacity: 0;
-          transform: translateY(8px);
-          transition: opacity 0.25s ease, transform 0.25s ease, background var(--transition);
+          transform: translateY(6px);
+          transition: opacity 0.25s ease, transform 0.25s ease, background 0.22s ease;
         }
         .book-card:hover .book-card-btn {
-          opacity: 1;
-          transform: translateY(0);
+          opacity: 1; transform: translateY(0);
         }
-        .book-card-btn:hover { background: var(--amber-dark); }
+        .book-card-btn:hover { background: #b8944e; }
 
         /* featured badge */
         .featured-badge {
@@ -602,7 +553,7 @@ export default function BooksPage() {
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
           .nav { padding: 0 2rem; }
-          .books-grid { grid-template-columns: repeat(2, 1fr); }
+          .books-grid { grid-template-columns: repeat(3, 1fr); }
           .gumroad-cards { grid-template-columns: 1fr 1fr; }
           .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
         }
@@ -613,7 +564,7 @@ export default function BooksPage() {
           .nav-logo-sub { display: none; }
           .page-hero { padding: 2.5rem 1.25rem 2rem; }
           .page-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
-          .filter-bar { padding: 1rem 1.25rem; top: 68px; flex-wrap: wrap; gap: 0.75rem; }
+          
           .filter-btns { flex-wrap: wrap; gap: 0.5rem; }
           .filter-search { width: 100%; }
           .filter-count { display: none; }
@@ -629,14 +580,16 @@ export default function BooksPage() {
         }
         @media (max-width: 480px) {
           .books-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-          .filter-bar { flex-direction: column; align-items: flex-start; }
+          
         }
       `}</style>
 
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark">SL</div>
+          <div className="nav-logo-mark">
+            <img src="/images/onruetatinlogo.png" alt="On Rue Tatin" />
+          </div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -645,7 +598,7 @@ export default function BooksPage() {
         <ul className="nav-links">
           <li><a href="/books" className="active">Books</a></li>
           <li><a href="/cooking-school">Cooking School</a></li>
-          <li><a href="/writing-courses">Writing Courses</a></li>
+          <li><a href="/write-your-cookbook">Write Your Cookbook</a></li>
           <li><a href="/ghostwriting">Ghostwriting</a></li>
           <li><a href="/about">About</a></li>
         </ul>
@@ -658,7 +611,7 @@ export default function BooksPage() {
       </nav>
 
       <div className={`mobile-drawer${menuOpen ? " open" : ""}`}>
-        {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([label, href]) => (
+        {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Get in Touch","/contact"]].map(([label, href]) => (
           <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
       </div>
@@ -670,143 +623,57 @@ export default function BooksPage() {
           <div className="page-hero-inner">
             <div>
               <p className="page-hero-eyebrow">Susan Herrmann Loomis</p>
-              <h1>The <span>Books</span></h1>
+              <h1>My <span>Books</span></h1>
             </div>
             <p className="page-hero-count">
-              <span>{filtered.length}</span> of {BOOKS.length} books
+              <span>14</span> books
             </p>
           </div>
         </div>
 
         {/* ── FILTER BAR ── */}
-        <div className="filter-bar">
-          <div className="filter-left">
-            {/* filter toggle pill — styled like FHM "+ FILTERS" button */}
-            <button className="filter-toggle">
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="7" y1="1" x2="7" y2="13"/>
-                <line x1="1" y1="7" x2="13" y2="7"/>
-              </svg>
-              Filters
-            </button>
-
-            {(["all","early","mid","recent"] as const).map((f) => {
-              const labels: Record<string, string> = { all: "All books", early: "1996 – 2002", mid: "2003 – 2010", recent: "2011 – 2018" };
-              return (
-                <button
-                  key={f}
-                  className={`filter-btn${filter === f ? " active" : ""}`}
-                  onClick={() => setFilter(f)}
-                >
-                  {labels[f]}
-                </button>
-              );
-            })}
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <input
-              className="filter-search"
-              type="text"
-              placeholder="Search books…"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-            <p className="filter-count">
-              <span>{filtered.length}</span> books
-            </p>
-          </div>
-        </div>
-
-        {/* ── BOOKS GRID ── */}
+        {/* ── BOOKS GRID — grouped by era ── */}
         <section className="books-grid-section">
-          <div className="books-grid">
-            {filtered.length === 0 ? (
-              <div className="empty-state">
-                <p>No books match your search.</p>
+
+          {[
+            { era: "recent", label: "2010 — Present", books: BOOKS.filter(b => b.era === "recent") },
+            { era: "mid",    label: "2000 — 2009",    books: BOOKS.filter(b => b.era === "mid") },
+            { era: "early",  label: "1985 — 1999",    books: BOOKS.filter(b => b.era === "early") },
+          ].map(group => (
+            <div className="era-group" key={group.era}>
+              <div className="era-label">
+                <span className="era-rule" />
+                <span className="era-text">{group.label}</span>
+                <span className="era-rule" />
               </div>
-            ) : filtered.map((book, i) => (
-              <a
-                href={book.amazon}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`book-card reveal-up delay-${(i % 3) + 1}`}
-                key={`${book.year}-${book.title}`}
-                style={{ textDecoration: "none" }}
-              >
-                {/* Featured badge */}
-                {book.featured && (
-                  <span className="featured-badge">James Beard Nominated</span>
-                )}
-
-                {/* Cover — swap placeholder with real image when available */}
-                {book.img ? (
-                  <img src={book.img} alt={book.title} />
-                ) : (
-                  <div
-                    className="book-cover-placeholder"
-                    style={{ background: CARD_COLORS[i % CARD_COLORS.length] }}
+              <div className="books-grid">
+                {group.books.map((book, i) => (
+                  <a
+                    href={book.amazon}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="book-card"
+                    key={`${book.year}-${book.title}`}
                   >
-                    <span className="bcp-year">{book.year}</span>
-                    <div className="bcp-line" />
-                    {/*
-                      PLACEHOLDER: replace this entire .book-cover-placeholder div with:
-                      <img src="/images/covers/your-cover-filename.jpg" alt={book.title} />
-                      once Susan provides real cover images.
-                    */}
-                    <span className="bcp-title">{book.title}</span>
-                    <div className="bcp-line" />
-                    <span className="bcp-author">Susan Herrmann Loomis</span>
-                  </div>
-                )}
+                    {book.featured && (
+                      <span className="featured-badge">Latest</span>
+                    )}
+                    <img src={book.img} alt={book.title} />
+                    <div className="book-card-info">
+                      <p className="book-card-year">{book.year}</p>
+                      <p className="book-card-title-author">{book.title}</p>
+                      <p className="book-card-desc">{book.description}</p>
+                      <span className="book-card-btn">Buy on Amazon →</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
 
-                {/* Info overlay — always visible at bottom, like FHM */}
-                <div className="book-card-info">
-                  <p className="book-card-title-author">{book.title}</p>
-                  <p className="book-card-year">{book.year}</p>
-                  <p className="book-card-desc">{book.description}</p>
-                  <span className="book-card-btn">Buy on Amazon →</span>
-                </div>
-              </a>
-            ))}
-          </div>
         </section>
 
         {/* ── GUMROAD ── */}
-        <section className="gumroad-section">
-          <div className="gumroad-inner">
-            <p className="gumroad-eyebrow reveal">Digital Downloads</p>
-            <h2 className="reveal">Recipe Downloads<br />&amp; Digital Extras</h2>
-            <p className="reveal">
-              Downloadable recipe collections, seasonal menus, and exclusive content
-              — straight from Susan&apos;s kitchen to yours.
-            </p>
-
-            <div className="gumroad-cards">
-              {[
-                { icon: "📄", title: "Seasonal Recipe Packs", desc: "Curated collections by season — spring markets, summer grilling, autumn braises, winter warmers." },
-                { icon: "🍽️", title: "Complete French Menus", desc: "Full three-course menus with shopping lists, timelines, and wine pairing notes." },
-                { icon: "📚", title: "Technique Guides", desc: "Step-by-step guides to essential French techniques drawn from Susan's decades of teaching." },
-              ].map((c, i) => (
-                <div className={`gumroad-card reveal delay-${i + 1}`} key={c.title}>
-                  <span className="gumroad-icon">{c.icon}</span>
-                  <h3>{c.title}</h3>
-                  <p>{c.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* PLACEHOLDER: replace # with Susan's confirmed Gumroad store URL */}
-            <a href="#" className="btn-gumroad reveal" target="_blank" rel="noopener noreferrer">
-              Visit the digital store →
-            </a>
-            <p className="gumroad-note">
-              {/* PLACEHOLDER: Gumroad URL to be confirmed by Susan */}
-              Store link coming soon · contact susan@onruetatin.com for early access
-            </p>
-          </div>
-        </section>
-
         {/* ── FOOTER ── */}
         <footer>
           <div className="footer-inner">
@@ -820,7 +687,7 @@ export default function BooksPage() {
             <div className="footer-col">
               <h4>Pages</h4>
               <ul>
-                {[["Books","/books"],["Cooking School","/cooking-school"],["Writing Courses","/writing-courses"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
+                {[["Books","/books"],["Cooking School","/cooking-school"],["Write Your Cookbook","/write-your-cookbook"],["Ghostwriting","/ghostwriting"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
                   <li key={h}><a href={h}>{l}</a></li>
                 ))}
               </ul>
