@@ -135,7 +135,7 @@ export default function WriteYourCookbookPage() {
 
         /* ── FOOTER ── */
         footer { background: #2e7175; padding: 4rem 4rem 0; color: #fff; border-top: 2px solid #c8a96e; }
-        .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1.4fr; gap: 4rem; padding-bottom: 3.5rem; }
+        .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; padding-bottom: 3.5rem; }
         .footer-brand-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; font-style: italic; font-weight: 700; color: #fff; display: block; margin-bottom: 0.75rem; }
         .footer-address { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
         .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c8a96e; margin-bottom: 1.25rem; }
@@ -143,13 +143,6 @@ export default function WriteYourCookbookPage() {
         .footer-col li { margin-bottom: 0.6rem; }
         .footer-col a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color 0.22s ease; }
         .footer-col a:hover { color: #fff; }
-        .footer-newsletter { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 2rem; }
-        .footer-newsletter h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
-        .footer-newsletter p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 1.25rem; }
-        .newsletter-input { width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; color: #fff; font-size: 13px; padding: 12px 18px; outline: none; margin-bottom: 0.75rem; font-family: 'Jost', sans-serif; }
-        .newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
-        .btn-subscribe { width: 100%; background: #c8a96e; color: #1a1714; border: none; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px; border-radius: 999px; transition: background 0.22s ease; font-family: 'Jost', sans-serif; }
-        .btn-subscribe:hover { background: #b8944e; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .footer-legal { display: flex; gap: 2rem; flex-wrap: wrap; }
         .footer-legal a, .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.22s ease; }
@@ -369,13 +362,7 @@ export default function WriteYourCookbookPage() {
                 ))}
               </ul>
             </div>
-            <div className="footer-newsletter">
-              <h3>Stay Informed</h3>
-              <p>Recipes, news, and class updates from Paris.</p>
-              <input className="newsletter-input" type="email" placeholder="example@email.com" />
-              <button className="btn-subscribe">Subscribe</button>
             </div>
-          </div>
           <div className="footer-bottom">
             <div className="footer-legal">
               <span className="footer-copy">© 2026 Susan Herrmann Loomis</span>

@@ -130,7 +130,7 @@ export default function CookingSchoolPage() {
           border-top: 1px solid rgba(255,255,255,0.06);
         }
         .footer-inner {
-          display: grid; grid-template-columns: 1.8fr 1fr 1.4fr;
+          display: grid; grid-template-columns: 1.8fr 1fr;
           gap: 4rem; padding-bottom: 3.5rem;
         }
         .footer-brand-name {
@@ -149,31 +149,6 @@ export default function CookingSchoolPage() {
           letter-spacing: 0.06em; color: rgba(255,255,255,0.5); transition: color var(--transition);
         }
         .footer-col a:hover { color: var(--amber); }
-        .footer-newsletter {
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: var(--radius-card); padding: 2rem;
-        }
-        .footer-newsletter h3 {
-          font-size: 1.2rem; font-weight: 800; text-transform: uppercase;
-          letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.4rem;
-        }
-        .footer-newsletter p { font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 1.25rem; }
-        .newsletter-input {
-          width: 100%; background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-btn);
-          color: var(--white); font-size: 13px; padding: 12px 16px; outline: none;
-          margin-bottom: 0.75rem; transition: border-color var(--transition); font-family: var(--sans);
-        }
-        .newsletter-input::placeholder { color: rgba(255,255,255,0.2); }
-        .newsletter-input:focus { border-color: var(--amber); }
-        .btn-subscribe {
-          width: 100%; background: var(--amber); color: var(--dark);
-          border: none; cursor: pointer; font-size: 13px; font-weight: 700;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          padding: 13px; border-radius: var(--radius-btn);
-          transition: background var(--transition); font-family: var(--sans);
-        }
-        .btn-subscribe:hover { background: var(--amber-dark); }
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.07); padding: 1.5rem 0;
           display: flex; align-items: center;
@@ -305,13 +280,7 @@ export default function CookingSchoolPage() {
                 ))}
               </ul>
             </div>
-            <div className="footer-newsletter">
-              <h3>Stay Informed</h3>
-              <p>News, recipes, and class updates from Normandy.</p>
-              <input className="newsletter-input" type="email" placeholder="example@email.com" />
-              <button className="btn-subscribe">Subscribe</button>
             </div>
-          </div>
           <div className="footer-bottom">
             <div className="footer-legal">
               <span className="footer-copy">© 2025 Susan Herrmann Loomis</span>

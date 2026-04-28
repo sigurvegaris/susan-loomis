@@ -613,7 +613,7 @@ export default function Home() {
         }
         .footer-inner {
           display: grid;
-          grid-template-columns: 1.8fr 1fr 1.4fr;
+          grid-template-columns: 1.8fr 1fr;
           gap: 4rem;
           padding-bottom: 3.5rem;
         }
@@ -645,42 +645,6 @@ export default function Home() {
         .footer-col a:hover { color: #fff; }
 
         /* newsletter box */
-        .footer-newsletter {
-          background: rgba(255,255,255,0.08);
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 4px;
-          padding: 2rem;
-        }
-        .footer-newsletter h3 {
-          font-size: 1.1rem; font-weight: 800;
-          text-transform: uppercase; letter-spacing: 0.04em;
-          color: #fff; margin-bottom: 0.5rem;
-        }
-        .footer-newsletter p {
-          font-size: 13px; color: rgba(255,255,255,0.6);
-          margin-bottom: 1.25rem;
-        }
-        .newsletter-input {
-          width: 100%; background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 2px;
-          color: #fff; font-size: 13px;
-          padding: 12px 18px; outline: none; margin-bottom: 0.75rem;
-          transition: border-color var(--transition);
-          font-family: var(--sans);
-        }
-        .newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
-        .newsletter-input:focus { border-color: var(--gold); }
-        .btn-subscribe {
-          width: 100%; background: var(--gold); color: #1a1714;
-          border: none; cursor: pointer;
-          font-size: 13px; font-weight: 700;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          padding: 13px; border-radius: 2px;
-          transition: background var(--transition);
-          font-family: var(--sans);
-        }
-        .btn-subscribe:hover { background: var(--gold-dark); }
 
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.15);
@@ -845,7 +809,7 @@ export default function Home() {
       <section className="books-section">
         <div className="books-header reveal">
           <h2>Her Books</h2>
-          <a href="/books" className="btn-outline-dark">View all 14 books</a>
+          <a href="/books" className="btn-outline-dark">View all 15 books</a>
         </div>
 
         <div className="books-carousel-wrap">
@@ -941,14 +905,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-
-          <div className="footer-newsletter">
-            <h3>Stay Informed</h3>
-            <p>News, recipes, and class updates from Normandy.</p>
-            <input className="newsletter-input" type="email" placeholder="example@email.com" />
-            <button className="btn-subscribe">Subscribe</button>
-          </div>
-        </div>
+            </div>
 
         <div className="footer-bottom">
           <div className="footer-legal">
