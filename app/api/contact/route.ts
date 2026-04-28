@@ -8,6 +8,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not set");
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+    }
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
