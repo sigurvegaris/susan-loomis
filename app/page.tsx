@@ -757,7 +757,8 @@ export default function Home() {
         }
 
         @media (max-width: 480px) {
-          .hero-img-wrap { height: 240px; }
+          .hero-img-wrap { height: 340px; }
+          .hero-img-wrap img { object-position: center 5%; }
           .about-card { height: 240px; }
           .about-card-title { font-size: 1.2rem; }
           .service-card { height: 240px; }
@@ -844,7 +845,7 @@ export default function Home() {
       <section className="books-section">
         <div className="books-header reveal">
           <h2>Her Books</h2>
-          <a href="/books" className="btn-outline-dark">View all 14 books</a>
+          <a href="/books" className="btn-outline-dark">View all 15 books</a>
         </div>
 
         <div className="books-carousel-wrap">
