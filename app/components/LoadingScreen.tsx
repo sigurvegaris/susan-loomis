@@ -3,16 +3,31 @@
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
-  const [phase, setPhase] = useState<"drawing" | "filled" | "fadeout" | "done">("drawing");
+  // Start as null — we don't know yet if we should show
+  const [phase, setPhase] = useState<"drawing" | "filled" | "fadeout" | "done" | null>(null);
 
   useEffect(() => {
+    // Show on first visit OR on page refresh
+    const isRefresh = performance.navigation?.type === 1 ||
+      (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type === "reload";
+    const hasShown = sessionStorage.getItem("shl-intro-shown");
+
+    if (hasShown && !isRefresh) {
+      setPhase("done");
+      return;
+    }
+
+    sessionStorage.setItem("shl-intro-shown", "1");
+    setPhase("drawing");
+
     const fillTimer  = setTimeout(() => setPhase("filled"),  2600);
     const fadeTimer  = setTimeout(() => setPhase("fadeout"), 3400);
     const doneTimer  = setTimeout(() => setPhase("done"),    4100);
     return () => { clearTimeout(fillTimer); clearTimeout(fadeTimer); clearTimeout(doneTimer); };
   }, []);
 
-  if (phase === "done") return null;
+  // null = waiting for client check, done = finished — both render nothing
+  if (phase === null || phase === "done") return null;
 
   return (
     <>
@@ -37,7 +52,6 @@ export default function LoadingScreen() {
           margin: 0 auto;
         }
 
-        /* Drawing phase — stroke animates in */
         .sig-drawing {
           fill: none;
           stroke: #1a1714;
@@ -50,7 +64,6 @@ export default function LoadingScreen() {
           animation: drawSig 2.4s ease forwards 0.2s;
         }
 
-        /* Filled phase — solid ink */
         .sig-filled {
           fill: #1a1714;
           stroke: #1a1714;
