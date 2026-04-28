@@ -845,7 +845,7 @@ export default function Home() {
       <section className="books-section">
         <div className="books-header reveal">
           <h2>Her Books</h2>
-          <a href="/books" className="btn-outline-dark">View all 15 books</a>
+          <a href="/books" className="btn-outline-dark">View all 14 books</a>
         </div>
 
         <div className="books-carousel-wrap">
