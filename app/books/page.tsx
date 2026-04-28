@@ -11,7 +11,7 @@ const BOOKS = [
     title: "Plat du Jour",
     era: "recent",
     description: "Susan's latest — French cuisine at its seasonal best. Recipes built around the French tradition of the daily special, for everyone who loves French food.",
-    amazon: "https://www.amazon.com/s?k=Plat+du+Jour+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Plat-Jour-French-Dinners-Made/dp/1682684504/",
     img: "/images/covers/plat-du-jour.jpg",
     featured: true,
   },
@@ -20,7 +20,7 @@ const BOOKS = [
     title: "In a French Kitchen",
     era: "recent",
     description: "How the French really cook. Tips, tricks, guides, menus, and more than 80 recipes drawn from the real kitchens of France.",
-    amazon: "https://www.amazon.com/s?k=In+a+French+Kitchen+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/French-Kitchen-Traditions-Everyday-Cooking/dp/1592408869/",
     img: "/images/covers/in-a-french-kitchen.jpg",
   },
   {
@@ -28,7 +28,7 @@ const BOOKS = [
     title: "French Grill",
     era: "recent",
     description: "Ingredients forward, simple, beautifully grilled — French grilling will change the way you cook outdoors forever.",
-    amazon: "https://www.amazon.com/s?k=French+Grill+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/French-Grill-Refined-Rustic-Recipes/dp/1682680843/",
     img: "/images/covers/french-grill.jpg",
   },
   {
@@ -36,7 +36,7 @@ const BOOKS = [
     title: "Nuts in the Kitchen",
     era: "mid",
     description: "A comprehensive collection of nut recipes for every meal — sweet, savory, and everything in between.",
-    amazon: "https://www.amazon.com/s?k=Nuts+in+the+Kitchen+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Nuts-Kitchen-Recipes-Every-Occasion-ebook/dp/B003GFIVZ2/",
     img: "/images/covers/nuts-in-the-kitchen.jpg",
   },
   {
@@ -44,7 +44,7 @@ const BOOKS = [
     title: "Cooking at Home on Rue Tatin",
     era: "mid",
     description: "Award-winning author and professional chef Susan Herrmann Loomis takes cooks on a journey through French home cooking.",
-    amazon: "https://www.amazon.com/s?k=Cooking+at+Home+on+Rue+Tatin",
+    amazon: "https://www.amazon.com/Cooking-at-Home-Rue-Tatin/dp/0060758171/",
     img: "/images/covers/cooking-at-home-on-rue-tatin.jpg",
   },
   {
@@ -52,7 +52,7 @@ const BOOKS = [
     title: "On Rue Tatin",
     era: "early",
     description: "Part memoir, part cookbook — the story of arriving in Paris with little more than a student loan, and finding a life built around French food.",
-    amazon: "https://www.amazon.com/s?k=On+Rue+Tatin+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Rue-Tatin-Living-Cooking-French/dp/0767904559/",
     img: "/images/covers/on-rue-tatin.jpg",
   },
   {
@@ -60,7 +60,7 @@ const BOOKS = [
     title: "Farmhouse Cookbook",
     era: "early",
     description: "A beloved classic. Everything made from it is very good — an extensive and deeply satisfying collection of farmhouse recipes.",
-    amazon: "https://www.amazon.com/s?k=Farmhouse+Cookbook+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Farmhouse-Cookbook-Susan-Herrmann-Loomis/dp/1563051257/",
     img: "/images/covers/farmhouse-cookbook.jpg",
   },
   {
@@ -68,7 +68,7 @@ const BOOKS = [
     title: "French Farmhouse Cookbook",
     era: "early",
     description: "As much a book of inspiration as a recipe collection — over 250 uncommonly delicious recipes capturing rustic, richly flavored farmhouse cooking.",
-    amazon: "https://www.amazon.com/s?k=French+Farmhouse+Cookbook+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/French-Farmhouse-Cookbook-Herrmann-Loomis/dp/0761106243/",
     img: "/images/covers/french-farmhouse-cookbook.jpg",
   },
   {
@@ -76,7 +76,7 @@ const BOOKS = [
     title: "Italian Farmhouse Cookbook",
     era: "early",
     description: "The essence of Italian cooking — Susan goes to the source, where the techniques are still genuine and the recipes tied to the culture.",
-    amazon: "https://www.amazon.com/s?k=Italian+Farmhouse+Cookbook+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Italian-Farmhouse-Cookbook-Herrmann-Loomis/dp/0761105271/",
     img: "/images/covers/italian-farmhouse-cookbook.jpg",
   },
   {
@@ -84,7 +84,7 @@ const BOOKS = [
     title: "Tarte Tatin",
     era: "early",
     description: "Further adventures in a small French town — a delightful follow-up to On Rue Tatin, rich with food, life, and Normandy.",
-    amazon: "https://www.amazon.com/s?k=Tarte+Tatin+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Tarte-Tatin-More-Belle-Vie/dp/0007235224/",
     img: "/images/covers/tarte-tatin.jpg",
   },
   {
@@ -92,7 +92,7 @@ const BOOKS = [
     title: "Clambakes & Fish Fries",
     era: "early",
     description: "From clambakes to shrimp boils to oyster galas — nothing is more pleasurable or nourishing than a great seafood celebration.",
-    amazon: "https://www.amazon.com/s?k=Clambakes+Fish+Fries+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Clambakes-Fries-Susan-Herrmann-Loomis/dp/1563056712/",
     img: "/images/covers/clambakes-and-fish-fries.jpg",
   },
   {
@@ -100,7 +100,7 @@ const BOOKS = [
     title: "Great American Seafood Cookbook",
     era: "early",
     description: "The seafood-lover's bible — for health, variety, and flavor, the definitive guide to American seafood cooking.",
-    amazon: "https://www.amazon.com/s?k=Great+American+Seafood+Cookbook+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Sea-Shining-American-Seafood-Cookbook/dp/B002G2OIHQ/",
     img: "/images/covers/great-american-seafood-cookbook.jpg",
   },
   {
@@ -108,7 +108,7 @@ const BOOKS = [
     title: "A Holiday Cookbook",
     era: "early",
     description: "Les Recettes de la Saison — a holiday cookbook from the chefs of La Madeleine and Susan Herrmann Loomis.",
-    amazon: "https://www.amazon.com/s?k=Holiday+Cookbook+La+Madeleine+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Recettes-Saison-Cookbook-Madeleine-Herrmann/dp/0964395517/",
     img: "/images/covers/a-holiday-cookbook.jpg",
   },
   {
@@ -116,7 +116,7 @@ const BOOKS = [
     title: "The Food Lover's Guide to Paris",
     era: "early",
     description: "An internationally acclaimed guide to French cuisine — written by an award-winning cookbook author and restaurant critic for France.",
-    amazon: "https://www.amazon.com/s?k=Food+Lovers+Guide+Paris+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Food-Lovers-Guide-France/dp/041314660X/",
     img: "/images/covers/food-lovers-guide-paris.jpg",
   },
   {
@@ -124,7 +124,7 @@ const BOOKS = [
     title: "Les Meilleures Recettes",
     era: "early",
     description: "The best recipes from the regions of France — a special book that will inspire your palate and ignite a passion for great food.",
-    amazon: "https://www.amazon.com/s?k=Les+Meilleures+Recettes+Susan+Herrmann+Loomis",
+    amazon: "https://www.amazon.com/Meilleures-recettes-regions-France/dp/2253165964/",
     img: "/images/covers/les-meilleures-recettes.jpg",
   },
 ];
@@ -540,15 +540,16 @@ export default function BooksPage() {
           transition: color var(--transition);
         }
         .footer-legal a:hover { color: var(--white); }
-        .footer-social { display: flex; gap: 0.75rem; }
-        .footer-social a {
-          font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-          text-transform: uppercase; color: rgba(255,255,255,0.28);
-          border: 1px solid rgba(255,255,255,0.1); padding: 6px 14px;
-          border-radius: var(--radius-btn);
-          transition: color var(--transition), border-color var(--transition);
+                .footer-social { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .footer-social-link {
+          display: flex; align-items: center; justify-content: center;
+          width: 38px; height: 38px;
+          color: rgba(255,255,255,0.6);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 2px;
+          transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease;
         }
-        .footer-social a:hover { color: var(--amber); border-color: var(--amber); }
+        .footer-social-link:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.08); }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -681,7 +682,7 @@ export default function BooksPage() {
               <span className="footer-brand-name">Susan Herrmann Loomis</span>
               <p className="footer-address">
                 On Rue Tatin Cooking School<br />
-                Louviers, Normandy, France &amp; Paris, France
+                Paris, France
               </p>
             </div>
             <div className="footer-col">
@@ -702,14 +703,22 @@ export default function BooksPage() {
           <div className="footer-bottom">
             <div className="footer-legal">
               <span className="footer-copy">© 2025 Susan Herrmann Loomis</span>
-              <a href="/privacy">Privacy Policy</a>
               <a href="https://onruetatin.com" target="_blank" rel="noopener noreferrer">onruetatin.com</a>
             </div>
-            <div className="footer-social">
-              <a href="#">Instagram</a>
-              <a href="#">Facebook</a>
-              <a href="#">Amazon</a>
-            </div>
+                      <div className="footer-social">
+            <a href="mailto:susan@onruetatin.com" className="footer-social-link" title="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://www.instagram.com/susanherrmannloomis/" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/onruetatin/" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://substack.com/@susanherrmannloomis" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Substack">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+            </a>
+          </div>
           </div>
         </footer>
 

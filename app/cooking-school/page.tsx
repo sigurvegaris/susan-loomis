@@ -182,14 +182,16 @@ export default function CookingSchoolPage() {
         .footer-legal { display: flex; gap: 2rem; flex-wrap: wrap; }
         .footer-legal a, .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); transition: color var(--transition); }
         .footer-legal a:hover { color: var(--white); }
-        .footer-social { display: flex; gap: 0.75rem; }
-        .footer-social a {
-          font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-          color: rgba(255,255,255,0.28); border: 1px solid rgba(255,255,255,0.1);
-          padding: 6px 14px; border-radius: var(--radius-btn);
-          transition: color var(--transition), border-color var(--transition);
+                .footer-social { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .footer-social-link {
+          display: flex; align-items: center; justify-content: center;
+          width: 38px; height: 38px;
+          color: rgba(255,255,255,0.6);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 2px;
+          transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease;
         }
-        .footer-social a:hover { color: var(--amber); border-color: var(--amber); }
+        .footer-social-link:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.08); }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -291,7 +293,7 @@ export default function CookingSchoolPage() {
               <span className="footer-brand-name">Susan Herrmann Loomis</span>
               <p className="footer-address">
                 On Rue Tatin Cooking School<br />
-                Louviers, Normandy, France &amp; Paris, France<br />
+                Paris, France<br />
                 susan@onruetatin.com
               </p>
             </div>
@@ -313,14 +315,22 @@ export default function CookingSchoolPage() {
           <div className="footer-bottom">
             <div className="footer-legal">
               <span className="footer-copy">© 2025 Susan Herrmann Loomis</span>
-              <a href="/privacy">Privacy Policy</a>
               <a href="https://onruetatin.com" target="_blank" rel="noopener noreferrer">onruetatin.com</a>
             </div>
-            <div className="footer-social">
-              <a href="#">Instagram</a>
-              <a href="#">Facebook</a>
-              <a href="#">Amazon</a>
-            </div>
+                      <div className="footer-social">
+            <a href="mailto:susan@onruetatin.com" className="footer-social-link" title="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://www.instagram.com/susanherrmannloomis/" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/onruetatin/" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://substack.com/@susanherrmannloomis" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Substack">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+            </a>
+          </div>
           </div>
         </footer>
 
