@@ -15,15 +15,10 @@ export default function ContactPage() {
     setSending(true);
     setError("");
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
+        body: JSON.stringify(formData),
       });
       if (res.ok) {
         setSubmitted(true);
@@ -432,7 +427,7 @@ export default function ContactPage() {
             </div>
           <div className="footer-bottom">
             <div className="footer-legal">
-              <span className="footer-copy">© 2025 Susan Herrmann Loomis</span>
+              <span className="footer-copy">© 2026 Susan Herrmann Loomis</span>
               <a href="https://onruetatin.com" target="_blank" rel="noopener noreferrer">onruetatin.com</a>
             </div>
                       <div className="footer-social">
