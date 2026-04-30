@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import LoadingScreen from "./components/LoadingScreen";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Susan Herrmann Loomis – Author, Chef & Cooking School",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <LoadingScreen />
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
