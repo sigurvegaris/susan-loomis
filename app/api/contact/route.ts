@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         from: "Susan Loomis Website <onboarding@resend.dev>",
-        to: ["victor.perez2867@gmail.com"],
+        to: ["susan@onruetatin.com"],
         reply_to: email,
         subject: `New message from susanloomis.com — ${subject || "Contact Form"}`,
         html: `
