@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import LoadingScreen from "./components/LoadingScreen";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Susan Herrmann Loomis – Author, Chef & Cooking School",
   description:
     "Fifteen cookbooks. Thirty years in a Norman kitchen. Author of French Farmhouse Cookbook, On Rue Tatin, French Grill, and more.",
   icons: {
-    icon: "/images/onruetatinlogo.png",
-    apple: "/images/onruetatinlogo.png",
+    icon: "/onruetatinlogo.png",
+    apple: "/onruetatinlogo.png",
   },
 };
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <LoadingScreen />
         {children}
+        <Analytics />
       </body>
     </html>
   );
