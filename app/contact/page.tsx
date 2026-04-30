@@ -328,7 +328,7 @@ export default function ContactPage() {
 
             <div className="contact-info-block">
               <h3>Location</h3>
-              <p>Paris, France<br />& Paris, France</p>
+              <p>Paris, France</p>
             </div>
 
             <div className="contact-info-block">
