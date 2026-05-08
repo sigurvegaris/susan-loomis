@@ -112,7 +112,7 @@ export default function LoadingScreen() {
             textAnchor="middle"
             className={phase === "drawing" ? "sig-drawing" : "sig-filled"}
           >
-            Bonjour!
+            Bonjour! Let's write your cookbook...
           </text>
         </svg>
         <div className="loader-line" />
