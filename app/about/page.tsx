@@ -403,19 +403,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── WHO SHE IS (FHM "Our Vision" style) ── */}
+        {/* ── WHO SHE IS ── */}
         <section className="about-content-section reveal">
-          <h2 className="acs-h2">Who She Is</h2>
+          <h2 className="acs-h2">About Susan</h2>
           <p className="acs-body">
-            Susan Herrmann Loomis is an award-winning author, professionally
-            trained chef, food journalist, and cooking school proprietor based in
-            France. She moved to Paris in the early 1980s to study cooking at
-            École de Cuisine La Varenne, co-authored <em>The Food Lover&apos;s
-            Guide to Paris</em> with Patricia Wells, and never quite left.
-            Since 1993 she has lived and cooked in a lovingly restored
-            15th-century convent in Paris — a quick hour outside
-            Paris, just across the street from the Gothic Church of
-            Notre-Dame de Louviers.
+            Originally from Seattle, Susan Herrmann Loomis moved from Seattle to Paris to become a
+            culinary apprentice so she could write knowledgeably about food. Her trajectory has included
+            travels throughout the world as a food journalist, interviewing chefs, farmers, home cooks where
+            they live, and transmitting their stories and recipes in her fourteen books. She now makes her
+            home in the gorgeous city of Paris, where she writes, cooks, and teaches in her lovingly restored
+            Paris kitchen.
+          </p>
+          <p className="acs-body">
+            <a href="/contact" style={{ color: "#2e7175", borderBottom: "1px solid #2e7175", fontWeight: 600 }}>Contact Susan</a> for your cookbook project;
+            she will help you turn your passion into a beautiful record of your culinary heritage.
           </p>
           <div className="acs-img">
             <img
@@ -425,21 +426,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── HER APPROACH (FHM "Our History" style) ── */}
+        {/* ── HER APPROACH ── */}
         <section className="about-content-section reveal">
           <h2 className="acs-h2">Her Approach</h2>
           <p className="acs-body">
             What captivates Susan, aside from flavor and excellence, are the
             people who grow and fashion food into gorgeous tastes. She is a
             passionate advocate of sustainable agriculture — nearly all the
-            produce she uses in her Norman kitchen comes from within five
-            kilometres of her home. She believes firmly in the connection
-            between food producers and consumers, and that cooking is
-            inseparable from the land, the seasons, and the community around
-            the table. This philosophy runs through every one of her fourteen
-            books, her journalism, and every class she teaches.
+            produce she uses in her Paris kitchen comes from local producers.
+            She believes firmly in the connection between food producers and
+            consumers, and that cooking is inseparable from the land, the
+            seasons, and the community around the table. This philosophy runs
+            through every one of her fourteen books, her journalism, and every
+            class she teaches.
           </p>
-          {/* PLACEHOLDER: replace with a market or farm photo */}
           <div className="acs-img">
             <img
               src="/images/chairs.jpg"

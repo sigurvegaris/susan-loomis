@@ -69,8 +69,58 @@ export default function WriteYourCookbookPage() {
         }
         .content-section p { font-size: 16px; color: #6e6660; line-height: 1.85; margin-bottom: 1rem; }
 
+        /* ── CREATE YOUR BOOK SECTION ── */
+        .create-book-section {
+          background: #2e7175;
+          padding: 6rem 4rem;
+        }
+        .create-book-inner {
+          max-width: 1100px; margin: 0 auto;
+          display: grid; grid-template-columns: 1.4fr 1fr;
+          gap: 6rem; align-items: center;
+        }
+        .create-eyebrow {
+          font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+          text-transform: uppercase; color: #c8a96e;
+          margin-bottom: 1rem; display: block;
+        }
+        .create-book-left h2 {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: clamp(2.8rem, 5vw, 4.5rem);
+          font-weight: 700; color: #fff;
+          line-height: 1.1; margin-bottom: 1.5rem;
+        }
+        .create-book-left h2 em {
+          font-style: italic; color: #c8a96e;
+        }
+        .create-divider {
+          width: 48px; height: 2px; background: #c8a96e;
+          margin-bottom: 1.75rem;
+        }
+        .create-book-left p {
+          font-size: 16px; color: rgba(255,255,255,0.8);
+          line-height: 1.85; margin-bottom: 1rem;
+        }
+        .create-book-right {
+          display: flex; flex-direction: column; gap: 2.5rem;
+        }
+        .create-stat {
+          border-left: 3px solid #c8a96e;
+          padding-left: 1.5rem;
+        }
+        .create-stat-num {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 3.5rem; font-weight: 700;
+          color: #c8a96e; line-height: 1; display: block;
+        }
+        .create-stat-label {
+          font-size: 12px; letter-spacing: 0.12em;
+          text-transform: uppercase; color: rgba(255,255,255,0.6);
+          margin-top: 6px; display: block;
+        }
+
         /* ── HOW IT WORKS ── */
-        .how-section { background: #ede8df; padding: 5rem 4rem; }
+        .how-section { background: #f7f3ed; padding: 5rem 4rem; }
         .how-inner { max-width: 900px; margin: 0 auto; }
         .how-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #6e6660; margin-bottom: 0.75rem; }
         .how-inner h2 {
@@ -99,7 +149,7 @@ export default function WriteYourCookbookPage() {
         .step-content li::before { content: '—'; position: absolute; left: 0; color: #c8a96e; }
 
         /* ── SELF PUB ── */
-        .selfpub-section { background: #f7f3ed; padding: 5rem 4rem; }
+        .selfpub-section { background: #ede8df; padding: 5rem 4rem; }
         .selfpub-inner { max-width: 900px; margin: 0 auto; }
         .selfpub-inner h2 {
           font-family: 'Cormorant Garamond', Georgia, serif;
@@ -169,6 +219,8 @@ export default function WriteYourCookbookPage() {
           .nav-links, .nav-cta { display: none; }
           .hamburger { display: flex; }
           .nav-logo-sub { display: none; }
+          .create-book-section { padding: 4rem 1.5rem; }
+          .create-book-inner { grid-template-columns: 1fr; gap: 3rem; }
           .hero, .content-section, .selfpub-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
           .hero { padding-top: 3rem; }
           .how-section, .selfpub-section, .cta-section { padding: 3.5rem 1.5rem; }
@@ -217,22 +269,56 @@ export default function WriteYourCookbookPage() {
         {/* ── HERO ── */}
         <section className="hero">
           <p className="hero-eyebrow">Memory · Legacy · Culture</p>
-          <h1>Write Your<br />Family Cookbook</h1>
+          <h1>Let&apos;s Write Your<br />Family Cookbook!</h1>
           <p>
-            I&apos;ve written fifteen cookbooks, with recipes gathered from home and farm cooks,
-            chefs, friends, family. Each book represents a time and place in history — and as
-            people make the recipes, they live the story of each person who made it before them.
+            Susan Herrmann Loomis is an American chef, food journalist, and award-winning
+            author of fourteen cookbooks on French cooking. For more than thirty years she
+            has lived, written, cooked, and taught in France. Today, she lives in Paris where
+            she writes, works with people to create their own books, and welcomes students
+            into her Paris kitchen to learn the fine points of French cuisine.
           </p>
           <p>
-            Now, I want to help you do what I&apos;ve done: assemble your cookbook, using recipes
-            you have gathered that represent your personal heritage and culture.
+            Susan&apos;s dream is to help you gather together your family recipes into a book
+            that will transcend the ages, and preserve your family legacy for future generations.
           </p>
           <div className="hero-divider" />
-          <p>
-            A family cookbook is a conversation over generations. It records history. It holds
-            memory, habit, and identity. It speaks of where you come from and what has been
-            carried forward.
-          </p>
+          <a href="/contact" className="btn-cta-primary" style={{ display: "inline-flex", marginTop: "0.5rem" }}>Get in touch</a>
+        </section>
+
+        {/* ── LET'S CREATE YOUR BOOK ── */}
+        <section className="create-book-section">
+          <div className="create-book-inner">
+            <div className="create-book-left">
+
+              <h2>Let&apos;s Create<br /><em>Your Book</em></h2>
+              <div className="create-divider" />
+              <p>
+                Your family recipes are your legacy, an imprint of your family culture, to be
+                prepared, appreciated, shared. Each time you make a time-honored recipe, you
+                think of the person who prepared it before you; future generations will do the same.
+              </p>
+              <p>
+                We maintain so much of ourselves and our culture through recipes; let me help you
+                gather together your recipes into a book that you can share, that will be used,
+                loved, passed along. We will make it beautiful, a delicious expression of your
+                heritage, your now, your future.
+              </p>
+            </div>
+            <div className="create-book-right">
+              <div className="create-stat">
+                <span className="create-stat-num">14</span>
+                <span className="create-stat-label">Books written by Susan</span>
+              </div>
+              <div className="create-stat">
+                <span className="create-stat-num">30+</span>
+                <span className="create-stat-label">Years in France</span>
+              </div>
+              <div className="create-stat">
+                <span className="create-stat-num">∞</span>
+                <span className="create-stat-label">Generations your book will reach</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ── HOW IT WORKS ── */}
@@ -245,6 +331,14 @@ export default function WriteYourCookbookPage() {
               <div className="step">
                 <span className="step-num">1</span>
                 <div className="step-content">
+                  <h3>We set up an introductory call</h3>
+                  <p>So that you can tell me your dream and we can decide how to proceed.</p>
+                </div>
+              </div>
+
+              <div className="step">
+                <span className="step-num">2</span>
+                <div className="step-content">
                   <h3>We establish a strategy</h3>
                   <ul>
                     <li>Who is the book for?</li>
@@ -256,7 +350,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">2</span>
+                <span className="step-num">3</span>
                 <div className="step-content">
                   <h3>We come up with a specific outline</h3>
                   <p>A structure that reflects your family, your culture, your history.</p>
@@ -264,7 +358,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">3</span>
+                <span className="step-num">4</span>
                 <div className="step-content">
                   <h3>We create a timeline and meet regularly</h3>
                   <p>Regular check-ins to keep the project moving and on track.</p>
@@ -272,7 +366,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">4</span>
+                <span className="step-num">5</span>
                 <div className="step-content">
                   <h3>We decide which recipes to include</h3>
                   <p>Which ones you want people to use, and which ones to include for historic reference.</p>
@@ -280,7 +374,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">5</span>
+                <span className="step-num">6</span>
                 <div className="step-content">
                   <h3>We set up a schedule of recipe testing</h3>
                   <p>Making sure every recipe works as written before it goes to print.</p>
@@ -288,7 +382,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">6</span>
+                <span className="step-num">7</span>
                 <div className="step-content">
                   <h3>We get the headnotes written, stories placed</h3>
                   <p>The photos linked to specific sections. Every recipe has its story.</p>
@@ -296,7 +390,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">7</span>
+                <span className="step-num">8</span>
                 <div className="step-content">
                   <h3>We get you a finished manuscript</h3>
                   <p>Ready to hand to a publisher.</p>
@@ -304,7 +398,7 @@ export default function WriteYourCookbookPage() {
               </div>
 
               <div className="step">
-                <span className="step-num">8</span>
+                <span className="step-num">9</span>
                 <div className="step-content">
                   <h3>We find you a publisher to self-publish the book</h3>
                   <p>Susan guides you through the self-publishing process from start to finish.</p>

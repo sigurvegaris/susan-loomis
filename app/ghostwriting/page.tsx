@@ -356,16 +356,16 @@ export default function GhostwritingPage() {
 
         {/* ── HERO ── */}
         <section className="gw-hero">
-          <p className="gw-hero-eyebrow">Ghostwriting & Consulting</p>
+          <p className="gw-hero-eyebrow">Ghostwriting &amp; Consulting</p>
           <h1>Your Story,<br /><span>Expertly Told</span></h1>
           <div className="gw-hero-row">
             <p className="gw-hero-desc">
-              Susan Herrmann Loomis brings thirty years of food writing,
-              recipe development, and publishing experience to ghostwriting
-              projects — food memoirs, cookbooks, culinary narratives, and
-              beyond. She writes in your voice, not hers. The result is a
-              book that sounds unmistakably like you, built on the craft of
-              someone who has done it fourteen times.
+              Susan Herrmann Loomis brings thirty years of research and interviews
+              with cooks and chefs throughout the world, food writing, recipe
+              development, and publishing experience to ghostwriting projects —
+              food memoirs, cookbooks, culinary narratives, and beyond. She writes
+              in your voice, not hers. The result is a book that sounds unmistakably
+              like you, built on her expertise, craft, and talent as well as your own.
             </p>
             <div className="agent-note">
               <h3>A note on the process</h3>

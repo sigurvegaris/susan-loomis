@@ -188,7 +188,7 @@ export default function Home() {
         .hero {
           min-height: 100vh;
           padding-top: 72px;
-          background: var(--cream);
+          background: #2e7175;
           display: flex; align-items: center;
           justify-content: center;
           padding-left: 6rem; padding-right: 6rem;
@@ -230,14 +230,14 @@ export default function Home() {
         }
         .hero-titles span {
           font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
-          text-transform: uppercase; color: #6e6660;
+          text-transform: uppercase; color: rgba(255,255,255,0.7);
         }
         .hero-title-dot { color: #c8a96e !important; font-size: 14px; letter-spacing: 0 !important; }
         .hero-card h1 {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: clamp(2.4rem, 4vw, 3.8rem);
           font-weight: 700; font-style: italic;
-          color: #a8382a; line-height: 1.15;
+          color: #ffffff; line-height: 1.15;
           margin-bottom: 1.25rem;
           animation: fadeUp 0.6s ease 0.2s both;
         }
@@ -247,7 +247,7 @@ export default function Home() {
           animation: fadeUp 0.6s ease 0.3s both;
         }
         .hero-card p {
-          font-size: 16px; color: #6e6660;
+          font-size: 16px; color: rgba(255,255,255,0.8);
           line-height: 1.85; margin-bottom: 1rem;
           font-weight: 400;
           animation: fadeUp 0.6s ease 0.35s both;
@@ -265,12 +265,12 @@ export default function Home() {
           letter-spacing: 0.15em; text-transform: uppercase;
           padding: 16px 28px;
           border-radius: var(--radius-btn);
-          border: 1.5px solid #1a1714;
-          color: #1a1714;
+          border: 1.5px solid #ffffff;
+          color: #ffffff;
           background: transparent;
           transition: background 0.22s ease, color 0.22s ease;
         }
-        .btn-hero:hover { background: #2e7175; border-color: #2e7175; color: #f7f3ed; }
+        .btn-hero:hover { background: #ffffff; color: #2e7175; }
         .btn-hero-ghost {
           display: flex; align-items: center; justify-content: center;
           text-align: center;
@@ -406,6 +406,43 @@ export default function Home() {
           transition: background var(--transition), color var(--transition), transform var(--transition);
         }
         .carousel-arrow:hover { background: #2e7175; border-color: #2e7175; color: #f7f3ed; transform: scale(1.05); }
+
+        /* ── TESTIMONIALS ── */
+        .testi-section { background: #2e7175; padding: 5rem 4rem; }
+        .testi-inner { width: 100%; }
+        .testi-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; text-align: center; display: block; }
+        .testi-heading {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: clamp(2rem, 3.5vw, 3rem);
+          font-weight: 700; color: #fff;
+          text-align: center; margin-bottom: 3rem; line-height: 1.2;
+        }
+        .testi-heading em { font-style: italic; color: #c8a96e; }
+        .testi-grid { display: flex; gap: 1.5rem; justify-content: center; }
+        .testi-card {
+          width: 460px; max-width: 100%;
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.12);
+          padding: 2.5rem;
+          display: flex; flex-direction: column; gap: 1.25rem;
+          transition: background 0.22s ease;
+        }
+        .testi-card:hover { background: rgba(255,255,255,0.12); }
+        .testi-mark {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 4rem; color: #c8a96e;
+          line-height: 0.8; display: block;
+        }
+        .testi-quote {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: clamp(1rem, 1.4vw, 1.15rem);
+          font-style: italic; color: rgba(255,255,255,0.9);
+          line-height: 1.8; flex: 1;
+        }
+        .testi-divider { width: 32px; height: 1px; background: #c8a96e; }
+        .testi-author { display: flex; flex-direction: column; gap: 4px; }
+        .testi-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; }
+        .testi-source { font-size: 12px; color: rgba(255,255,255,0.5); }
 
         /* ================================================
            ABOUT SUSAN (FHM "About Frans Hals" card style)
@@ -555,26 +592,7 @@ export default function Home() {
           font-weight: 800; text-transform: uppercase;
           letter-spacing: 0.01em;
         }
-        .testi-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.25rem;
-        }
-        .testi-card {
-          background: var(--dark-card);
-          border-radius: var(--radius-card);
-          padding: 2.25rem 2rem;
-          display: flex; flex-direction: column; gap: 1rem;
-          border: 1px solid rgba(255,255,255,0.05);
-          transition: transform var(--transition), border-color var(--transition);
-        }
-        .testi-card:hover { transform: translateY(-5px); border-color: rgba(245,200,66,0.2); }
-        .testi-stars { color: var(--amber); font-size: 12px; letter-spacing: 2px; }
-        .testi-quote { font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.78); line-height: 1.75; flex: 1; }
-        .testi-rule { width: 24px; height: 1px; background: rgba(255,255,255,0.1); }
-        .testi-name { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; }
-        .testi-source { font-size: 11px; color: rgba(255,255,255,0.22); }
-
+ 
         /* ================================================
            PRESS STRIP
            ================================================ */
@@ -688,7 +706,7 @@ export default function Home() {
           .hero-btns { align-items: center; }
           .services-grid { grid-template-columns: 1fr; }
           .service-card { height: 280px; }
-          .testi-grid { grid-template-columns: 1fr 1fr; }
+          .testi-grid { grid-template-columns: 1fr; }
           .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
         }
 
@@ -703,6 +721,8 @@ export default function Home() {
           .books-section { padding: 3.5rem 1.5rem; }
           .books-header h2 { font-size: 1.6rem; }
           .book-card { flex: 0 0 170px; height: 240px; }
+          .testi-section { padding: 3.5rem 1.5rem; }
+          .testi-grid { flex-direction: column; }
           .about-section { padding: 3rem 1.5rem; }
           .about-card { height: 300px; }
           .services-section { padding: 2rem 1.5rem 3.5rem; }
@@ -841,6 +861,38 @@ export default function Home() {
           <div className="carousel-arrows">
             <button className="carousel-arrow" onClick={() => scrollCarousel(-1)} aria-label="Previous">←</button>
             <button className="carousel-arrow" onClick={() => scrollCarousel(1)} aria-label="Next">→</button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section className="testi-section">
+        <div className="testi-inner">
+          <p className="testi-eyebrow">What people say</p>
+          <h2 className="testi-heading">Her Work,<br /><em>Their Words</em></h2>
+          <div className="testi-grid">
+            <div className="testi-card">
+              <span className="testi-mark">&ldquo;</span>
+              <p className="testi-quote">
+                I credit Susan Herrmann Loomis with getting this book out of my head and onto the page. Susan is a brilliant culinary talent, a walking encyclopedia of food, my trusted recipe consultant.
+              </p>
+              <div className="testi-divider" />
+              <div className="testi-author">
+                <span className="testi-name">Maya Kaimal</span>
+                <span className="testi-source"><em>Indian Flavor Every Day</em> — Clarkson Potter, 2023</span>
+              </div>
+            </div>
+            <div className="testi-card">
+              <span className="testi-mark">&ldquo;</span>
+              <p className="testi-quote">
+                Susan Herrmann Loomis graciously provided her many years of experience to guide me in how to write a recipe and put a cookbook together. Thank you for the helpful guidance, encouragement, and making this project fun.
+              </p>
+              <div className="testi-divider" />
+              <div className="testi-author">
+                <span className="testi-name">Chris Hamilton</span>
+                <span className="testi-source"><em>Chris Cooks!</em> — Self published, 2025</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

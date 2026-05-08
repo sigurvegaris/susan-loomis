@@ -311,7 +311,7 @@ export default function ContactPage() {
           <p className="contact-hero-sub">
             For book inquiries, writing courses, ghostwriting, and general
             questions — reach Susan here. For cooking school bookings,
-            visit onruetatin.com directly.
+            visit <a href="https://onruetatin.com" target="_blank" rel="noopener noreferrer" style={{ color: "#c8a96e", borderBottom: "1px solid #c8a96e" }}>onruetatin.com</a> directly.
           </p>
         </section>
 
