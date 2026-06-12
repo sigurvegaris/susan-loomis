@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function WriteYourCookbookPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,8 +9,6 @@ export default function WriteYourCookbookPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap');
-
         /* ── NAV ── */
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -19,13 +18,13 @@ export default function WriteYourCookbookPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
-        .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 19px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
+        .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
         .nav-logo-sub { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #6e6660; line-height: 1; margin-top: 2px; }
         .nav-links { display: flex; list-style: none; gap: 2.25rem; align-items: center; }
-        .nav-links a { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 600; color: #6e6660; transition: color 0.22s ease; }
+        .nav-links a { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; color: #6e6660; transition: color 0.22s ease; }
         .nav-links a:hover, .nav-links a.active { color: #a8382a; }
         .nav-cta { background: #a8382a; color: #fff; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 10px 22px; border-radius: 2px; transition: background 0.22s ease; flex-shrink: 0; }
         .nav-cta:hover { background: #8a2d21; }
@@ -40,11 +39,11 @@ export default function WriteYourCookbookPage() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Jost', sans-serif; }
         a { text-decoration: none; color: inherit; }
-        .page-wrap { padding-top: 72px; background: #f7f3ed; }
+        .page-wrap { padding-top: 72px; background: #F5E6C8; }
 
         /* ── HERO ── */
         .hero {
-          background: #f7f3ed;
+          background: #F5E6C8;
           padding: 5rem 4rem 4rem;
           max-width: 900px;
           margin: 0 auto;
@@ -60,7 +59,7 @@ export default function WriteYourCookbookPage() {
         .hero-divider { width: 48px; height: 2px; background: #c8a96e; margin: 2.5rem 0; }
 
         /* ── CONTENT ── */
-        .content-section { background: #f7f3ed; padding: 0 4rem 5rem; max-width: 900px; margin: 0 auto; }
+        .content-section { background: #F5E6C8; padding: 0 4rem 5rem; max-width: 900px; margin: 0 auto; }
         .content-section h2 {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -120,7 +119,7 @@ export default function WriteYourCookbookPage() {
         }
 
         /* ── HOW IT WORKS ── */
-        .how-section { background: #f7f3ed; padding: 5rem 4rem; }
+        .how-section { background: #F5E6C8; padding: 5rem 4rem; }
         .how-inner { max-width: 900px; margin: 0 auto; }
         .how-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #6e6660; margin-bottom: 0.75rem; }
         .how-inner h2 {
@@ -149,7 +148,7 @@ export default function WriteYourCookbookPage() {
         .step-content li::before { content: '—'; position: absolute; left: 0; color: #c8a96e; }
 
         /* ── SELF PUB ── */
-        .selfpub-section { background: #ede8df; padding: 5rem 4rem; }
+        .selfpub-section { background: #F5E6C8; padding: 5rem 4rem; }
         .selfpub-inner { max-width: 900px; margin: 0 auto; }
         .selfpub-inner h2 {
           font-family: 'Cormorant Garamond', Georgia, serif;
@@ -163,7 +162,7 @@ export default function WriteYourCookbookPage() {
           display: flex; align-items: flex-start; gap: 1rem;
           font-size: 15px; color: #6e6660; line-height: 1.75;
           padding: 1rem 1.25rem;
-          background: #ede8df;
+          background: #e8d5a3;
           border-left: 3px solid #c8a96e;
         }
 
@@ -186,7 +185,7 @@ export default function WriteYourCookbookPage() {
         /* ── FOOTER ── */
         footer { background: #2e7175; padding: 4rem 4rem 0; color: #fff; border-top: 2px solid #c8a96e; }
         .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; padding-bottom: 3.5rem; }
-        .footer-brand-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; font-style: italic; font-weight: 700; color: #fff; display: block; margin-bottom: 0.75rem; }
+        .footer-brand-name { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; display: block; margin-bottom: 0.75rem; }
         .footer-address { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
         .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c8a96e; margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
@@ -236,7 +235,7 @@ export default function WriteYourCookbookPage() {
       <nav className="nav">
         <a href="/" className="nav-logo">
           <div className="nav-logo-mark">
-            <img src="/images/onruetatinlogo.png" alt="On Rue Tatin" />
+            <Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" />
           </div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
@@ -266,59 +265,23 @@ export default function WriteYourCookbookPage() {
 
       <div className="page-wrap">
 
-        {/* ── HERO ── */}
+        {/* ── HERO — LET'S CREATE YOUR BOOK ── */}
         <section className="hero">
           <p className="hero-eyebrow">Memory · Legacy · Culture</p>
-          <h1>Let&apos;s Write Your<br />Family Cookbook!</h1>
-          <p>
-            Susan Herrmann Loomis is an American chef, food journalist, and award-winning
-            author of fourteen cookbooks on French cooking. For more than thirty years she
-            has lived, written, cooked, and taught in France. Today, she lives in Paris where
-            she writes, works with people to create their own books, and welcomes students
-            into her Paris kitchen to learn the fine points of French cuisine.
-          </p>
-          <p>
-            Susan&apos;s dream is to help you gather together your family recipes into a book
-            that will transcend the ages, and preserve your family legacy for future generations.
-          </p>
+          <h1>Let&apos;s Create<br /><em>Your Book</em></h1>
           <div className="hero-divider" />
-          <a href="/contact" className="btn-cta-primary" style={{ display: "inline-flex", marginTop: "0.5rem" }}>Get in touch</a>
-        </section>
-
-        {/* ── LET'S CREATE YOUR BOOK ── */}
-        <section className="create-book-section">
-          <div className="create-book-inner">
-            <div className="create-book-left">
-
-              <h2>Let&apos;s Create<br /><em>Your Book</em></h2>
-              <div className="create-divider" />
-              <p>
-                Your family recipes are your legacy, an imprint of your family culture, to be
-                prepared, appreciated, shared. Each time you make a time-honored recipe, you
-                think of the person who prepared it before you; future generations will do the same.
-              </p>
-              <p>
-                We maintain so much of ourselves and our culture through recipes; let me help you
-                gather together your recipes into a book that you can share, that will be used,
-                loved, passed along. We will make it beautiful, a delicious expression of your
-                heritage, your now, your future.
-              </p>
-            </div>
-            <div className="create-book-right">
-              <div className="create-stat">
-                <span className="create-stat-num">14</span>
-                <span className="create-stat-label">Books written by Susan</span>
-              </div>
-              <div className="create-stat">
-                <span className="create-stat-num">30+</span>
-                <span className="create-stat-label">Years in France</span>
-              </div>
-              <div className="create-stat">
-                <span className="create-stat-num">∞</span>
-                <span className="create-stat-label">Generations your book will reach</span>
-              </div>
-            </div>
-          </div>
+          <p>
+            Your family recipes are your legacy, an imprint of your family culture, to be
+            prepared, appreciated, shared. Each time you make a time-honored recipe, you
+            think of the person who prepared it before you; future generations will do the same.
+          </p>
+          <p>
+            We maintain so much of ourselves and our culture through recipes; let me help you
+            gather together your recipes into a book that you can share, that will be used,
+            loved, passed along. We will make it beautiful, a delicious expression of your
+            heritage, your now, your future.
+          </p>
+          <a href="/contact" className="btn-cta-primary" style={{ display: "inline-flex", marginTop: "1.5rem" }}>Get in touch</a>
         </section>
 
         {/* ── HOW IT WORKS ── */}
@@ -427,13 +390,11 @@ export default function WriteYourCookbookPage() {
           <div className="cta-inner">
             <h2>Ready to begin?</h2>
             <p>
-              Fill out the contact form or send Susan an email directly.
-              She responds to all enquiries within 3–5 business days.
+              We set up an introductory call, so that you can tell me your dream and we can decide how to proceed.
             </p>
-            <div className="cta-btns">
-              <a href="/contact" className="btn-cta-primary">Fill out the form →</a>
-              <a href="mailto:susan@onruetatin.com" className="btn-cta-secondary">susan@onruetatin.com</a>
-            </div>
+            <p style={{ marginTop: "0.5rem" }}>
+              Contact me: <a href="mailto:susan@onruetatin.com" style={{ color: "#c8a96e", borderBottom: "1px solid #c8a96e" }}>susan@onruetatin.com</a>
+            </p>
           </div>
         </section>
 

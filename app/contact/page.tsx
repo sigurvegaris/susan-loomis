@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function ContactPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
@@ -62,11 +63,11 @@ export default function ContactPage() {
         .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE ── */
-        .page-wrap { padding-top: 72px; background: var(--cream); }
+        .page-wrap { padding-top: 72px; background: #F5E6C8; }
 
         /* ── HERO ── */
         .contact-hero {
-          background: var(--dark); padding: 5rem 4rem;
+          background: #2e7175; padding: 5rem 4rem;
           position: relative; overflow: hidden;
         }
         .contact-hero::before {
@@ -93,7 +94,7 @@ export default function ContactPage() {
 
         /* ── MAIN CONTACT SECTION ── */
         .contact-main {
-          background: var(--cream); padding: 5rem 4rem;
+          background: #F5E6C8; padding: 5rem 4rem;
           display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start;
         }
 
@@ -112,7 +113,7 @@ export default function ContactPage() {
         }
         .contact-info-block a:hover { color: var(--amber-dark); }
         .response-note {
-          background: var(--dark); border-radius: var(--radius-card);
+          background: #2e7175; border-radius: var(--radius-card);
           padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
         }
         .response-note span {
@@ -139,7 +140,7 @@ export default function ContactPage() {
         .contact-form input,
         .contact-form select,
         .contact-form textarea {
-          width: 100%; background: var(--white);
+          width: 100%; background: #F5E6C8;
           border: 2px solid rgba(13,31,26,0.12); border-radius: var(--radius-card);
           color: var(--text-dark); font-family: var(--sans);
           font-size: 14px; font-weight: 400;
@@ -156,9 +157,9 @@ export default function ContactPage() {
           color: rgba(13,31,26,0.5); cursor: pointer;
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c8880' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
           background-repeat: no-repeat; background-position: right 16px center;
-          background-color: var(--white); padding-right: 40px;
+          background-color: #FDF6E9; padding-right: 40px;
         }
-        .contact-form select option { color: var(--text-dark); background: var(--white); }
+        .contact-form select option { color: var(--text-dark); background: #F5E6C8; }
         .contact-form textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
 
         .form-note {
@@ -167,7 +168,7 @@ export default function ContactPage() {
         .form-note a { color: var(--text-dark); border-bottom: 1px solid var(--amber); }
 
         .btn-submit {
-          background: var(--dark); color: var(--amber);
+          background: #2e7175; color: var(--amber);
           border: none; font-family: var(--sans);
           font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
           text-transform: uppercase; padding: 15px 36px;
@@ -179,7 +180,7 @@ export default function ContactPage() {
 
         /* success state */
         .form-success {
-          background: var(--dark); border-radius: var(--radius-card);
+          background: #2e7175; border-radius: var(--radius-card);
           padding: 3rem; text-align: center;
           display: flex; flex-direction: column; align-items: center; gap: 1rem;
         }
@@ -196,7 +197,7 @@ export default function ContactPage() {
         .form-success p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 340px; }
 
         /* ── 3 INFO CARDS ROW (FHM policy plan style) ── */
-        .info-cards-section { background: var(--cream); padding: 0 4rem 5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .info-cards-section { background: #F5E6C8; padding: 0 4rem 5rem; display: flex; flex-direction: column; gap: 1rem; }
         .info-card {
           border: 2px solid rgba(13,31,26,0.14); border-radius: var(--radius-card);
           padding: 1.75rem 2.5rem; display: flex; align-items: center;
@@ -214,7 +215,7 @@ export default function ContactPage() {
         .btn-outline-card:hover { background: var(--text-dark); color: var(--amber); }
 
         /* ── FOOTER ── */
-        footer { background: var(--dark); padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
+        footer { background: #2e7175; padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
         .footer-inner { display: grid; grid-template-columns: 1.8fr 1fr; gap: 4rem; padding-bottom: 3.5rem; }
         .footer-brand-name { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); display: block; margin-bottom: 0.75rem; }
         .footer-address { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.8; }
@@ -275,7 +276,7 @@ export default function ContactPage() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
+          <div className="nav-logo-mark"><Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 /* ============================================================
    SCROLL REVEAL
@@ -66,7 +67,7 @@ export default function AboutPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
@@ -85,13 +86,13 @@ export default function AboutPage() {
 
         /* ── PAGE WRAPPER ── */
         .page-wrap {
-          background: var(--cream);
+          background: #F5E6C8;
           padding-top: 72px;
         }
 
         /* ── HERO ── */
         .about-hero {
-          background: var(--dark);
+          background: #2e7175;
           padding: 4.5rem 4rem 5rem;
           position: relative; overflow: hidden;
         }
@@ -135,6 +136,7 @@ export default function AboutPage() {
           background: var(--dark-mid);
           margin-left: auto;
           width: 90%;
+          position: relative;
         }
         .about-hero-portrait img {
           width: 100%; height: 100%; object-fit: cover; object-position: 80% top;
@@ -146,7 +148,7 @@ export default function AboutPage() {
            Each section: amber bg, bold h2 top-left, body text, then large rounded image
         */
         .about-content-section {
-          background: var(--cream);
+          background: #F5E6C8;
           padding: 5rem 4rem;
           display: flex;
           flex-direction: column;
@@ -175,6 +177,7 @@ export default function AboutPage() {
           overflow: hidden;
           background: var(--dark-card);
           margin: 0 auto;
+          position: relative;
         }
         .acs-img img {
           width: 100%; height: 100%; object-fit: cover;
@@ -218,7 +221,7 @@ export default function AboutPage() {
 
         /* ── SERVICES SECTION ── */
         .services-section {
-          background: var(--dark);
+          background: #2e7175;
           padding: 5rem 4rem 4rem;
         }
         .services-section .acs-h2 {
@@ -270,7 +273,7 @@ export default function AboutPage() {
 
         /* ── FOOTER ── */
         footer {
-          background: var(--dark); padding: 4rem 4rem 0; color: var(--white);
+          background: #2e7175; padding: 4rem 4rem 0; color: var(--white);
           border-top: 1px solid rgba(255,255,255,0.06);
         }
         .footer-inner {
@@ -316,8 +319,8 @@ export default function AboutPage() {
         @media (max-width: 1024px) {
           .nav { padding: 0 2rem; }
           .about-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-          .about-hero-portrait { aspect-ratio: 4/3; width: 100%; margin-left: 0; }
-          .about-hero-portrait img { object-position: center 10%; }
+          .about-hero-portrait { aspect-ratio: 3/4; width: 60%; margin: 0 auto; }
+          .about-hero-portrait img { object-position: center; }
           .services-grid { grid-template-columns: 1fr 1fr; }
           .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
           .acs-img { width: 85%; }
@@ -330,7 +333,6 @@ export default function AboutPage() {
           .about-hero { padding: 3rem 1.25rem 3rem; }
           .about-hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
           .about-hero-desc { font-size: 15px; }
-          .about-hero-portrait { aspect-ratio: 3/2; }
           .about-content-section { padding: 3.5rem 1.25rem; }
           .acs-h2 { font-size: 1.6rem; }
           .acs-body { font-size: 15px; }
@@ -343,7 +345,6 @@ export default function AboutPage() {
           .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
         }
         @media (max-width: 480px) {
-          .about-hero-portrait { aspect-ratio: 1/1; }
           .about-hero h1 { font-size: 2rem; }
         }
       `}</style>
@@ -351,7 +352,7 @@ export default function AboutPage() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
+          <div className="nav-logo-mark"><Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -395,9 +396,12 @@ export default function AboutPage() {
             </div>
 
             <div className="about-hero-portrait">
-              <img
+              <Image
                 src="/images/Susan-Great-Photo.jpg"
                 alt="Susan Herrmann Loomis"
+                fill
+                sizes="(max-width: 900px) 90vw, 540px"
+                preload
               />
             </div>
           </div>
@@ -419,9 +423,11 @@ export default function AboutPage() {
             she will help you turn your passion into a beautiful record of your culinary heritage.
           </p>
           <div className="acs-img">
-            <img
+            <Image
               src="/images/susan-outside-grill.jpg"
               alt="Susan Herrmann Loomis"
+              fill
+              sizes="(max-width: 768px) 100vw, 760px"
             />
           </div>
         </section>
@@ -441,9 +447,11 @@ export default function AboutPage() {
             class she teaches.
           </p>
           <div className="acs-img">
-            <img
+            <Image
               src="/images/chairs.jpg"
               alt="Susan Herrmann Loomis"
+              fill
+              sizes="(max-width: 768px) 100vw, 760px"
               style={{ objectPosition: "center 60%" }}
             />
           </div>

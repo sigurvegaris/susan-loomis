@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 
 
@@ -22,7 +23,7 @@ export default function GhostwritingPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
@@ -40,10 +41,10 @@ export default function GhostwritingPage() {
         .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE ── */
-        .page-wrap { padding-top: 72px; background: var(--cream); }
+        .page-wrap { padding-top: 72px; background: #F5E6C8; }
 
         /* ── FAMILY COOKBOOK SECTION ── */
-        .family-cookbook-section { background: var(--cream); padding: 5rem 4rem; }
+        .family-cookbook-section { background: #F5E6C8; padding: 5rem 4rem; }
         .family-cookbook-inner { display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; max-width: 1200px; margin: 0 auto; }
         .fc-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.75rem; }
         .family-cookbook-text h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; font-style: italic; color: var(--terra); line-height: 1.2; margin-bottom: 1.5rem; }
@@ -55,7 +56,7 @@ export default function GhostwritingPage() {
         .fc-step li, .fc-self-pub li { font-size: 14px; color: var(--warm); line-height: 1.8; padding-left: 1rem; position: relative; }
         .fc-step li::before, .fc-self-pub li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
         .fc-self-pub { margin-top: 1rem; padding-left: 1.25rem; border-left: 2px solid var(--gold); }
-        .fc-cta-card { background: var(--parch); border: 1px solid rgba(26,23,20,0.1); padding: 2.5rem; position: sticky; top: 96px; }
+        .fc-cta-card { background: #F5E6C8; border: 1px solid rgba(26,23,20,0.1); padding: 2.5rem; position: sticky; top: 96px; }
         .fc-cta-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 700; font-style: italic; color: var(--ink); margin-bottom: 0.75rem; }
         .fc-cta-card p { font-size: 14px; color: var(--warm); line-height: 1.75; margin-bottom: 1.5rem; }
         .btn-fc-cta { display: block; background: var(--terra); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 24px; text-align: center; border-radius: 2px; transition: background 0.22s ease; margin-bottom: 1rem; }
@@ -65,7 +66,7 @@ export default function GhostwritingPage() {
 
         /* ── HERO ── */
         .gw-hero {
-          background: var(--dark); padding: 5rem 4rem;
+          background: #2e7175; padding: 5rem 4rem;
           position: relative; overflow: hidden;
         }
         .gw-hero::before {
@@ -99,7 +100,7 @@ export default function GhostwritingPage() {
         .agent-note p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; }
 
         /* ── SERVICES — FHM large image card style ── */
-        .services-section { background: var(--cream); padding: 5rem 4rem; }
+        .services-section { background: #F5E6C8; padding: 5rem 4rem; }
         .services-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(13,31,26,0.45); margin-bottom: 1.5rem; }
         .services-section h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; text-transform: uppercase; color: var(--text-dark); margin-bottom: 2.5rem; }
         .services-section h2 span { color: var(--amber); }
@@ -109,7 +110,7 @@ export default function GhostwritingPage() {
         .service-big-card {
           position: relative; border-radius: var(--radius-card);
           overflow: hidden; aspect-ratio: 4/3;
-          background: var(--dark); cursor: pointer;
+          background: #2e7175; cursor: pointer;
           transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
         .service-big-card:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(13,31,26,0.2); }
@@ -140,7 +141,7 @@ export default function GhostwritingPage() {
 
         /* ── OVERLAP CARD SECTION — FHM image 3 style ── */
         /* Image right, dark card overlapping left */
-        .overlap-section { background: var(--cream); padding: 2rem 4rem 5rem; }
+        .overlap-section { background: #F5E6C8; padding: 2rem 4rem 5rem; }
         .overlap-section h2 { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(13,31,26,0.45); margin-bottom: 2rem; }
         .overlap-wrap {
           position: relative; display: flex; align-items: center;
@@ -154,7 +155,7 @@ export default function GhostwritingPage() {
         .overlap-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .overlap-card {
           position: relative; z-index: 2;
-          background: var(--dark); border-radius: var(--radius-card);
+          background: #2e7175; border-radius: var(--radius-card);
           padding: 3rem; width: 52%;
           box-shadow: 0 20px 60px rgba(13,31,26,0.3);
         }
@@ -175,7 +176,7 @@ export default function GhostwritingPage() {
 
         /* ── FLOATING CARD SECTION — FHM image 2 style ── */
         /* Image bleeds left, dark card floats right overlapping */
-        .float-section { background: var(--cream); padding: 0 4rem 5rem; }
+        .float-section { background: #F5E6C8; padding: 0 4rem 5rem; }
         .float-wrap { position: relative; display: flex; align-items: center; min-height: 440px; }
         .float-img {
           position: absolute; left: 0; top: 0; bottom: 0;
@@ -185,7 +186,7 @@ export default function GhostwritingPage() {
         .float-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .float-card {
           position: absolute; right: 0; z-index: 2;
-          background: var(--dark); border-radius: var(--radius-card);
+          background: #2e7175; border-radius: var(--radius-card);
           padding: 3rem; width: 50%;
           box-shadow: 0 20px 60px rgba(13,31,26,0.3);
         }
@@ -198,12 +199,12 @@ export default function GhostwritingPage() {
 
         /* ── BIG SINGLE CARD — FHM image 1 style ── */
         /* Full-width image card with pill top-left, date, title + button */
-        .featured-section { background: var(--cream); padding: 0 4rem 5rem; }
+        .featured-section { background: #F5E6C8; padding: 0 4rem 5rem; }
         .featured-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(13,31,26,0.45); margin-bottom: 1.5rem; }
         .featured-card {
           position: relative; border-radius: var(--radius-card);
           overflow: hidden; width: 100%; aspect-ratio: 16/3;
-          background: var(--dark);
+          background: #2e7175;
           transition: transform 0.35s ease;
         }
         .featured-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(13,31,26,0.22); }
@@ -237,7 +238,7 @@ export default function GhostwritingPage() {
 
 
         /* ── AGENT CARD ── */
-        .agent-section { background: var(--cream); padding: 5rem 4rem; }
+        .agent-section { background: #F5E6C8; padding: 5rem 4rem; }
         .agent-card { border: 2px solid rgba(13,31,26,0.18); border-radius: var(--radius-card); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
         .agent-card-left h3 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dark); margin-bottom: 0.4rem; }
         .agent-card-left p { font-size: 14px; color: rgba(13,31,26,0.6); line-height: 1.6; max-width: 580px; }
@@ -245,7 +246,7 @@ export default function GhostwritingPage() {
         .btn-outline-card:hover { background: var(--text-dark); color: var(--amber); }
 
         /* ── FOOTER ── */
-        footer { background: var(--dark); padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
+        footer { background: #2e7175; padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
         .footer-inner { display: grid; grid-template-columns: 1.8fr 1fr; gap: 4rem; padding-bottom: 3.5rem; }
         .footer-brand-name { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); display: block; margin-bottom: 0.75rem; }
         .footer-address { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.8; }
@@ -324,7 +325,7 @@ export default function GhostwritingPage() {
       <nav className="nav">
         <a href="/" className="nav-logo">
           <div className="nav-logo-mark">
-            <img src="/images/onruetatinlogo.png" alt="On Rue Tatin" />
+            <Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" />
           </div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
@@ -365,7 +366,8 @@ export default function GhostwritingPage() {
               development, and publishing experience to ghostwriting projects —
               food memoirs, cookbooks, culinary narratives, and beyond. She writes
               in your voice, not hers. The result is a book that sounds unmistakably
-              like you, built on her expertise, craft, and talent as well as your own.
+              like you, built on the expertise, craft, and talent of someone who has
+              done it fourteen times — as well as your own.
             </p>
             <div className="agent-note">
               <h3>A note on the process</h3>
@@ -388,9 +390,11 @@ export default function GhostwritingPage() {
 
             {/* Card 1 — Full Ghostwriting */}
             <div className={`service-big-card${expandedCard === 0 ? " expanded" : ""}`} onClick={() => toggleCard(0)}>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&auto=format&q=75"
                 alt="Full ghostwriting"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <span className="sbc-pill">Full Ghostwriting</span>
               <div className="sbc-bottom">
@@ -412,9 +416,11 @@ export default function GhostwritingPage() {
 
             {/* Card 2 — Writing Consulting */}
             <div className={`service-big-card${expandedCard === 1 ? " expanded" : ""}`} onClick={() => toggleCard(1)}>
-              <img
+              <Image
                 src="/images/stackofbooks.jpg"
                 alt="Writing consulting"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <span className="sbc-pill">Writing Consulting</span>
               <div className="sbc-bottom">

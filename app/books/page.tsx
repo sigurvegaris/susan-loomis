@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 /* ============================================================
    DATA
@@ -179,6 +180,7 @@ export default function BooksPage() {
           width: 40px; height: 40px;
           display: flex; align-items: center;
           justify-content: center; flex-shrink: 0; overflow: hidden;
+          position: relative;
         }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
@@ -231,14 +233,14 @@ export default function BooksPage() {
 
         /* ── PAGE WRAPPER — amber bg like FHM ── */
         .page-wrap {
-          background: var(--cream);
+          background: #F5E6C8;
           min-height: 100vh;
           padding-top: 72px;
         }
 
         /* ── PAGE HERO STRIP ── */
         .page-hero {
-          background: var(--dark);
+          background: #2e7175;
           padding: 4rem 3rem 3.5rem;
           position: relative; overflow: hidden;
         }
@@ -279,7 +281,7 @@ export default function BooksPage() {
         /* ── FILTER BAR — exact FHM style ── */
         /* ── BOOKS GRID — grouped by era ── */
         .books-grid-section {
-          background: var(--cream);
+          background: #F5E6C8;
           padding: 3rem 4rem 5rem;
         }
         .era-group { margin-bottom: 4rem; }
@@ -419,7 +421,7 @@ export default function BooksPage() {
 
         /* ── GUMROAD SECTION ── */
         .gumroad-section {
-          background: var(--dark);
+          background: #2e7175;
           padding: 5rem 3rem;
         }
         .gumroad-inner { max-width: 960px; margin: 0 auto; text-align: center; }
@@ -475,7 +477,7 @@ export default function BooksPage() {
 
         /* ── FOOTER ── */
         footer {
-          background: var(--dark); padding: 4rem 3rem 0; color: var(--white);
+          background: #2e7175; padding: 4rem 3rem 0; color: var(--white);
           border-top: 1px solid rgba(255,255,255,0.06);
         }
         .footer-inner {
@@ -562,7 +564,7 @@ export default function BooksPage() {
       <nav className="nav">
         <a href="/" className="nav-logo">
           <div className="nav-logo-mark">
-            <img src="/images/onruetatinlogo.png" alt="On Rue Tatin" />
+            <Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" />
           </div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
@@ -632,7 +634,7 @@ export default function BooksPage() {
                     {book.featured && (
                       <span className="featured-badge">Latest</span>
                     )}
-                    <img src={book.img} alt={book.title} />
+                    <Image src={book.img} alt={book.title} fill sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw" />
                     <div className="book-card-info">
                       <p className="book-card-year">{book.year}</p>
                       <p className="book-card-title-author">{book.title}</p>

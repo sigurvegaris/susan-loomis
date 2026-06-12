@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 /* ============================================================
    DATA
@@ -101,8 +102,6 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap');
-
         /* ================================================
            NAV
            ================================================ */
@@ -122,12 +121,13 @@ export default function Home() {
           width: 40px; height: 40px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0; overflow: hidden; background: transparent;
+          position: relative;
         }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name {
           font-family: 'Cormorant Garamond', Georgia, serif;
-          font-weight: 700; font-size: 19px;
+          font-weight: 600; font-size: 17px;
           color: #1a1714; letter-spacing: 0.01em; line-height: 1.1;
         }
         .nav-logo-sub {
@@ -194,6 +194,12 @@ export default function Home() {
           padding-left: 6rem; padding-right: 6rem;
           position: relative;
           overflow: hidden;
+        }
+        .hero::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse at 80% 40%, rgba(245,200,66,0.07) 0%, transparent 55%);
+          pointer-events: none;
         }
         .hero-inner {
           display: flex; align-items: center;
@@ -270,7 +276,7 @@ export default function Home() {
           background: transparent;
           transition: background 0.22s ease, color 0.22s ease;
         }
-        .btn-hero:hover { background: #ffffff; color: #2e7175; }
+        .btn-hero:hover { background: #F5E6C8; color: #2e7175; }
         .btn-hero-ghost {
           display: flex; align-items: center; justify-content: center;
           text-align: center;
@@ -418,9 +424,9 @@ export default function Home() {
           text-align: center; margin-bottom: 3rem; line-height: 1.2;
         }
         .testi-heading em { font-style: italic; color: #c8a96e; }
-        .testi-grid { display: flex; gap: 1.5rem; justify-content: center; }
+        .testi-grid { display: flex; gap: 1.5rem; }
         .testi-card {
-          width: 460px; max-width: 100%;
+          flex: 1;
           background: rgba(255,255,255,0.07);
           border: 1px solid rgba(255,255,255,0.12);
           padding: 2.5rem;
@@ -592,7 +598,6 @@ export default function Home() {
           font-weight: 800; text-transform: uppercase;
           letter-spacing: 0.01em;
         }
- 
         /* ================================================
            PRESS STRIP
            ================================================ */
@@ -706,7 +711,6 @@ export default function Home() {
           .hero-btns { align-items: center; }
           .services-grid { grid-template-columns: 1fr; }
           .service-card { height: 280px; }
-          .testi-grid { grid-template-columns: 1fr; }
           .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
         }
 
@@ -731,7 +735,6 @@ export default function Home() {
           .btn-get-in-touch { font-size: 10px; padding: 8px 14px; flex-shrink: 0; }
           .services-grid { grid-template-columns: 1fr; }
           .service-card { height: 300px; }
-          .testi-grid { grid-template-columns: 1fr; }
           .press-section { padding: 3rem 1.5rem; }
           .press-names { gap: 1.5rem; }
           .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -752,7 +755,7 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
+          <div className="nav-logo-mark"><Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -786,9 +789,12 @@ export default function Home() {
       <section className="hero">
         <div className="hero-inner">
           <div className="hero-img-wrap">
-            <img
+            <Image
               src="/images/susansmiling.jpg"
               alt="Susan Herrmann Loomis"
+              fill
+              sizes="(max-width: 900px) 100vw, 500px"
+              preload
             />
           </div>
 
@@ -806,7 +812,7 @@ export default function Home() {
             <div className="hero-rule" />
             <p>
               Susan Herrmann Loomis is an American chef, food journalist, and the
-              author of fifteen cookbooks on French cooking. For over thirty years
+              author of fourteen cookbooks on French cooking. For over thirty years
               she has lived, cooked, and taught in France — welcoming students into
               her Paris kitchen through her cooking school, On Rue Tatin.
             </p>
@@ -837,7 +843,7 @@ export default function Home() {
             {BOOKS.map((book) => (
               <div className="book-card" key={`${book.year}-${book.title}`}>
                 {book.img
-                  ? <img src={book.img} alt={book.title} />
+                  ? <Image src={book.img} alt={book.title} fill sizes="(max-width: 768px) 170px, 210px" />
                   : (
                     /* PLACEHOLDER: swap with <img src="/images/covers/..." /> */
                     <div className="book-placeholder-inner">
@@ -865,6 +871,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WRITE YOUR FAMILY COOKBOOK ── */}
+      <section style={{ background: "#F5E6C8", padding: "5rem 4rem" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6e6660", marginBottom: "1rem" }}>Memory · Legacy · Culture</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, fontStyle: "italic", color: "#a8382a", lineHeight: 1.2, marginBottom: "1.5rem" }}>Let&apos;s Write Your<br />Family Cookbook!</h2>
+            <div style={{ width: "48px", height: "2px", background: "#c8a96e", marginBottom: "1.5rem" }} />
+            <p style={{ fontSize: "16px", color: "#1a1714", lineHeight: 1.85, marginBottom: "1rem" }}>
+              Susan Herrmann Loomis is an American chef, food journalist, and award-winning
+              author of fourteen cookbooks on French cooking. For more than thirty years she
+              has lived, written, cooked, and taught in France. Today, she lives in Paris where
+              she writes, works with people to create their own books, and welcomes students
+              into her Paris kitchen to learn the fine points of French cuisine.
+            </p>
+            <p style={{ fontSize: "16px", color: "#1a1714", lineHeight: 1.85, marginBottom: "2rem" }}>
+              Susan&apos;s dream is to help you gather together your family recipes into a book
+              that will transcend the ages, and preserve your family legacy for future generations.
+            </p>
+            <a href="/write-your-cookbook" style={{ display: "inline-flex", background: "#2e7175", color: "#fff", fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 28px", borderRadius: "2px" }}>Learn more →</a>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            {[
+              { num: "14", label: "Books written by Susan" },
+              { num: "30+", label: "Years in France" },
+              { num: "∞", label: "Generations your book will reach" },
+            ].map(s => (
+              <div key={s.label} style={{ borderLeft: "3px solid #c8a96e", paddingLeft: "1.5rem" }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3.5rem", fontWeight: 700, color: "#a8382a", lineHeight: 1, display: "block" }}>{s.num}</span>
+                <span style={{ fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#6e6660", marginTop: "4px", display: "block" }}>{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── TESTIMONIALS ── */}
       <section className="testi-section">
         <div className="testi-inner">
@@ -885,7 +926,7 @@ export default function Home() {
             <div className="testi-card">
               <span className="testi-mark">&ldquo;</span>
               <p className="testi-quote">
-                Susan Herrmann Loomis graciously provided her many years of experience to guide me in how to write a recipe and put a cookbook together. Thank you for the helpful guidance, encouragement, and making this project fun.
+                Susan Herrmann Loomis graciously provided her many years of experience to guide me in how to write a recipe and put a cookbook together. Susan, thank you for the helpful guidance, encouragement, and making this project fun.
               </p>
               <div className="testi-divider" />
               <div className="testi-author">
@@ -901,9 +942,11 @@ export default function Home() {
       <section className="about-section">
         <div className="about-card-wrap">
           <div className="about-card">
-            <img
+            <Image
               src="/images/susanheadtilt.jpg"
               alt="Susan Herrmann Loomis"
+              fill
+              sizes="(max-width: 1000px) 100vw, 1000px"
             />
           </div>
           <span className="about-card-title">About Susan</span>
@@ -922,7 +965,7 @@ export default function Home() {
           {SERVICES.map((s, i) => (
             <a href={s.href} className={`service-card reveal delay-${i + 1}`} key={s.title}>
               {/* PLACEHOLDER: replace each img src with Susan's real photos */}
-              <img src={s.img} alt={s.title} style={i === 2 ? { objectPosition: 'center 80%' } : undefined} />
+              <Image src={s.img} alt={s.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={i === 2 ? { objectPosition: 'center 80%' } : undefined} />
               <span className="service-label">{s.label}</span>
               <p className="service-card-title">{s.title}</p>
               <p className="service-card-sub">{s.sub}</p>

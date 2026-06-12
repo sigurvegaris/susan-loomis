@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function CookingSchoolPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function CookingSchoolPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
@@ -36,7 +37,7 @@ export default function CookingSchoolPage() {
 
         /* ── PAGE ── */
         .page-wrap {
-          background: var(--dark);
+          background: #2e7175;
           padding-top: 72px;
           min-height: 100vh;
         }
@@ -98,6 +99,7 @@ export default function CookingSchoolPage() {
           border-radius: var(--radius-card); overflow: hidden;
           aspect-ratio: 3/4; background: #1a2a1a;
           animation: fadeUp 0.7s ease 0.25s both;
+          position: relative;
         }
         .cs-hero-img img {
           width: 100%; height: 100%; object-fit: cover;
@@ -126,7 +128,7 @@ export default function CookingSchoolPage() {
 
         /* ── FOOTER ── */
         footer {
-          background: var(--dark); padding: 4rem 4rem 0; color: var(--white);
+          background: #2e7175; padding: 4rem 4rem 0; color: var(--white);
           border-top: 1px solid rgba(255,255,255,0.06);
         }
         .footer-inner {
@@ -199,7 +201,7 @@ export default function CookingSchoolPage() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
+          <div className="nav-logo-mark"><Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>
@@ -253,9 +255,12 @@ export default function CookingSchoolPage() {
             </div>
             {/* PLACEHOLDER: replace with a real photo of the kitchen or convent */}
             <div className="cs-hero-img">
-              <img
+              <Image
                 src="/images/susan-teaching.jpg"
                 alt="On Rue Tatin cooking school"
+                fill
+                sizes="(max-width: 900px) 90vw, 540px"
+                preload
               />
             </div>
           </div>

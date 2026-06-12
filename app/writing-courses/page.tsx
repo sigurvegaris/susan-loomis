@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const MODULES = [
   {
@@ -52,7 +53,7 @@ export default function WritingCoursesPage() {
           border-bottom: 1px solid rgba(26,23,20,0.1);
         }
         .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: transparent; position: relative; }
         .nav-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; }
         .nav-logo-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 17px; color: #1a1714; letter-spacing: 0.01em; line-height: 1.1; }
@@ -70,11 +71,11 @@ export default function WritingCoursesPage() {
         .mobile-drawer a:hover { color: #a8382a; }
 
         /* ── PAGE ── */
-        .page-wrap { padding-top: 72px; background: var(--cream); }
+        .page-wrap { padding-top: 72px; background: #F5E6C8; }
 
         /* ── HERO ── */
         .wc-hero {
-          background: var(--dark); padding: 5rem 4rem;
+          background: #2e7175; padding: 5rem 4rem;
           position: relative; overflow: hidden;
         }
         .wc-hero::before {
@@ -146,7 +147,7 @@ export default function WritingCoursesPage() {
         .btn-consult:hover { background: var(--amber-dark); transform: translateY(-2px); }
 
         /* ── MODULES ── */
-        .modules-section { background: var(--cream); padding: 5rem 4rem; }
+        .modules-section { background: #F5E6C8; padding: 5rem 4rem; }
         .modules-header {
           display: flex; align-items: flex-end;
           justify-content: space-between; flex-wrap: wrap; gap: 1rem;
@@ -187,7 +188,7 @@ export default function WritingCoursesPage() {
 
         /* ── WAITLIST SECTION ── */
         .waitlist-section {
-          background: var(--dark); padding: 5rem 4rem; text-align: center;
+          background: #2e7175; padding: 5rem 4rem; text-align: center;
         }
         .waitlist-eyebrow {
           font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
@@ -235,7 +236,7 @@ export default function WritingCoursesPage() {
         }
 
         /* ── OUTLINED INFO CARD ── */
-        .info-section { background: var(--cream); padding: 5rem 4rem; }
+        .info-section { background: #F5E6C8; padding: 5rem 4rem; }
         .info-card {
           border: 2px solid rgba(13,31,26,0.18); border-radius: var(--radius-card);
           padding: 2rem 2.5rem; display: flex; align-items: center;
@@ -256,7 +257,7 @@ export default function WritingCoursesPage() {
         .btn-outline-card:hover { background: var(--text-dark); color: var(--amber); }
 
         /* ── FOOTER ── */
-        footer { background: var(--dark); padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
+        footer { background: #2e7175; padding: 4rem 4rem 0; color: var(--white); border-top: 1px solid rgba(255,255,255,0.06); }
         .footer-inner { display: grid; grid-template-columns: 1.8fr 1fr; gap: 4rem; padding-bottom: 3.5rem; }
         .footer-brand-name { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); display: block; margin-bottom: 0.75rem; }
         .footer-address { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.8; }
@@ -318,7 +319,7 @@ export default function WritingCoursesPage() {
       {/* ── NAV ── */}
       <nav className="nav">
         <a href="/" className="nav-logo">
-          <div className="nav-logo-mark"><img src="/images/onruetatinlogo.png" alt="On Rue Tatin" /></div>
+          <div className="nav-logo-mark"><Image src="/images/onruetatinlogo.png" alt="On Rue Tatin" fill sizes="40px" /></div>
           <div className="nav-logo-text">
             <span className="nav-logo-name">Susan Herrmann Loomis</span>
             <span className="nav-logo-sub">Author · Chef · Cooking School</span>

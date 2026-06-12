@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Dancing_Script } from "next/font/google";
+
+const dancingScript = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+});
 
 export default function LoadingScreen() {
   // Start as null — we don't know yet if we should show
@@ -8,8 +14,7 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     // Show on first visit OR on page refresh
-    const isRefresh = performance.navigation?.type === 1 ||
-      (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type === "reload";
+    const isRefresh = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type === "reload";
     const hasShown = sessionStorage.getItem("shl-intro-shown");
 
     if (hasShown && !isRefresh) {
@@ -32,8 +37,6 @@ export default function LoadingScreen() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-
         .loader-wrap {
           position: fixed; inset: 0; z-index: 9999;
           background: #f7f3ed;
@@ -56,7 +59,6 @@ export default function LoadingScreen() {
           fill: none;
           stroke: #1a1714;
           stroke-width: 1.5px;
-          font-family: 'Dancing Script', cursive;
           font-size: 100px;
           font-weight: 700;
           stroke-dasharray: 2000;
@@ -68,7 +70,6 @@ export default function LoadingScreen() {
           fill: #1a1714;
           stroke: #1a1714;
           stroke-width: 0.5px;
-          font-family: 'Dancing Script', cursive;
           font-size: 100px;
           font-weight: 700;
         }
@@ -102,17 +103,33 @@ export default function LoadingScreen() {
         @keyframes fadeInName {
           to { opacity: 1; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+          .loader-wrap { transition: none; }
+          .sig-drawing { animation: none; stroke-dashoffset: 0; }
+          .loader-line { animation: none; width: min(280px, 50vw); }
+          .loader-name { animation: none; opacity: 1; }
+        }
       `}</style>
 
-      <div className="loader-wrap">
-        <svg className="loader-svg" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg">
+      <div className="loader-wrap" aria-hidden="true">
+        <svg className={`loader-svg ${dancingScript.className}`} viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
           <text
             x="50%"
-            y="95"
+            y="80"
             textAnchor="middle"
             className={phase === "drawing" ? "sig-drawing" : "sig-filled"}
           >
-            Bonjour! Let's write your cookbook...
+            Bonjour!
+          </text>
+          <text
+            x="50%"
+            y="170"
+            textAnchor="middle"
+            className={phase === "drawing" ? "sig-drawing" : "sig-filled"}
+            style={{ fontSize: "60px" }}
+          >
+            Let&apos;s write your cookbook...
           </text>
         </svg>
         <div className="loader-line" />

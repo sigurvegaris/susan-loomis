@@ -22,34 +22,22 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from: "Susan Loomis Website <contact@susanloomis.com>",
         to: ["susan@onruetatin.com"],
+        cc: ["victor.perez2867@gmail.com"],
         reply_to: email,
         subject: `New message from susanloomis.com — ${subject || "Contact Form"}`,
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem;">
-            <h2 style="color: #a8382a; font-size: 1.5rem; margin-bottom: 1rem;">
-              New message from susanloomis.com
-            </h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 0.5rem 0; font-weight: bold; width: 100px; color: #6e6660;">Name:</td>
-                <td style="padding: 0.5rem 0;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.5rem 0; font-weight: bold; color: #6e6660;">Email:</td>
-                <td style="padding: 0.5rem 0;"><a href="mailto:${email}">${email}</a></td>
-              </tr>
-              <tr>
-                <td style="padding: 0.5rem 0; font-weight: bold; color: #6e6660;">Subject:</td>
-                <td style="padding: 0.5rem 0;">${subject || "—"}</td>
-              </tr>
-            </table>
-            <hr style="border: none; border-top: 1px solid #ede8df; margin: 1.5rem 0;" />
-            <p style="font-weight: bold; color: #6e6660; margin-bottom: 0.5rem;">Message:</p>
-            <p style="line-height: 1.75; white-space: pre-wrap;">${message}</p>
-            <hr style="border: none; border-top: 1px solid #ede8df; margin: 1.5rem 0;" />
-            <p style="color: #6e6660; font-size: 12px;">
-              Sent from the contact form at susanloomis.com
-            </p>
+          <div style="font-family: monospace; max-width: 600px; margin: 0 auto; padding: 2rem; color: #1a1714;">
+            <p>A message has been submitted via the contact form on susanloomis.com.</p>
+            <br/>
+            <p>NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${name}</p>
+            <p>EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:${email}">${email}</a></p>
+            <p>SUBJECT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${subject || "—"}</p>
+            <br/>
+            <p>MESSAGE:</p>
+            <p>${message}</p>
+            <br/>
+            <p>---</p>
+            <p>Reply to this email to contact the sender directly.</p>
           </div>
         `,
       }),
